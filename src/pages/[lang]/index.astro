@@ -1,5 +1,38 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from '../../layouts/Layout.astro';
+
+import '../../styles/global.css';
+
+// secciones ordenadas de la 1 a la 7
+import TripPlans from '../../components/1-trip-plans.astro';
+import TravelTools from '../../components/2-travel-tools.astro';
+import Gallery from '../../components/3-gallery.astro';
+import Planning from '../../components/4-planning.astro';
+import Testimonials from '../../components/5-testimonials.astro';
+import Contact from '../../components/6-contact.astro';
+import Footer from '../../components/7-footer.astro';
+
+//  rutas estáticas para los idiomas 
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } }
+  ];
+}
+
+// capturamos el idioma actual de la URL
+const { lang } = Astro.params;
 ---
 
-<Layout />
+<Layout title="Travelulu - Plan your next trip" lang={lang}>
+  <main>
+    <TripPlans lang={lang} />
+    <TravelTools lang={lang} />
+    <Gallery lang={lang} />
+    <Planning lang={lang} />
+    <Testimonials lang={lang} />
+    <Contact lang={lang} />
+  </main>
+  
+  <Footer lang={lang} />
+</Layout>

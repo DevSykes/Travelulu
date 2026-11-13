@@ -1,11 +1,11 @@
-import { localsEs } from "./ES.js";
+import { localsES } from "./ES.js";
+import { localsEN } from "./EN.js";
 
-const localsES = {
-    es: localsEs,
-    en: localsES
+const translations = {
+  es: localsES,
+  en: localsEN,
 };
 
-
 export const getTranslation = (lang) => {
-    return Locals[lang] || locals["es"];
-}
+  return translations[lang] || translations["es"];
+};
