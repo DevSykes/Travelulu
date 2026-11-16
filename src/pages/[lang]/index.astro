@@ -5,6 +5,7 @@ import '../../styles/global.css';
 
 // secciones ordenadas de la 1 a la 7
 import TripPlans from '../../components/1-trip-plans.astro';
+import Header from '../../components/0-header.astro';
 import TravelTools from '../../components/2-travel-tools.astro';
 import Gallery from '../../components/3-gallery.astro';
 import Planning from '../../components/4-planning.astro';
@@ -26,6 +27,7 @@ const { lang } = Astro.params;
 
 <Layout title="Travelulu - Plan your next trip" lang={lang}>
   <main>
+    <Header lang={lang} />
     <TripPlans lang={lang} />
     <TravelTools lang={lang} />
     <Gallery lang={lang} />

@@ -14,12 +14,6 @@ const styles = {
   // Layout
   section: "relative bg-white overflow-x-clip",
   
-  // Header
-  headerWrapper: "relative z-30 border-b border-[#D9DBE9] bg-white",
-  nav: "max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-[135px] flex items-center justify-between py-6 lg:py-[34px]",
-  logo: "text-[#5F2EEA] font-bold text-[28px] lg:text-[34.38px] leading-[1.2] tracking-tight",
-  menuButton: "w-[28px] h-[18px] flex items-center justify-center text-[#5F2EEA] hover:opacity-80 transition-opacity focus:outline-none cursor-pointer",
-  
   // Hero
   heroWrapper: "relative max-w-[1440px] mx-auto",
   heroContainer: "flex flex-col-reverse lg:block lg:h-[634px] px-6 sm:px-10 lg:px-[135px]",
@@ -48,21 +42,6 @@ const styles = {
 ---
 
 <section class={styles.section}>
-  
-  <!-- Header -->
-  <header class={styles.headerWrapper}>
-    <nav class={styles.nav}>
-      <a href={`/${lang}`} class={styles.logo}>
-        {content.logo}
-      </a>
-      
-      <button aria-label={content.navMenuAlt} class={styles.menuButton}>
-        <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 1H27M1 9H27M1 17H27" stroke="#5F2EEA" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-      </button>
-    </nav>
-  </header>
 
   <!-- Hero -->
   <div class={styles.heroWrapper}>
