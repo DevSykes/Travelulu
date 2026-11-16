@@ -20,5 +20,5 @@ export const localsES = {
       },
     },
   },
-  // Resto de secciones...
+  // Resto de secciones
 };
