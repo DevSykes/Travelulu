@@ -9,63 +9,67 @@ const { lang = 'es' } = Astro.props;
 const t = getTranslation(lang);
 const content = t.tripPlans;
 
-
+// Styles
 const styles = {
-  section: "relative bg-white pt-6 pb-16 overflow-hidden",
-  wrapper: "max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12",
+  // Layout
+  section: "relative bg-white overflow-x-clip",
   
   // Header
-  nav: "flex items-center justify-between mb-12 lg:mb-20",
-  logo: "text-indigo-700 font-bold text-2xl sm:text-3xl tracking-tight font-['Poppins']",
-  menuButton: "w-7 h-7 flex items-center justify-center text-indigo-700 hover:opacity-85 transition-opacity focus:outline-none",
+  headerWrapper: "relative z-30 border-b border-[#D9DBE9] bg-white",
+  nav: "max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-[135px] flex items-center justify-between py-6 lg:py-[34px]",
+  logo: "text-[#5F2EEA] font-bold text-[28px] lg:text-[34.38px] leading-[1.2] tracking-tight",
+  menuButton: "w-[28px] h-[18px] flex items-center justify-center text-[#5F2EEA] hover:opacity-80 transition-opacity focus:outline-none cursor-pointer",
   
-  // Hero Content Grid
-  heroGrid: "grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20",
-  leftColumn: "lg:col-span-6 z-10",
-  rightColumn: "lg:col-span-6 relative flex justify-center lg:justify-end",
-  
-  // Typography
-  title: "font-['Poppins'] font-bold text-[40px] sm:text-[54px] lg:text-[64px] leading-[1.05] text-[#2D2A4A] mb-8 tracking-[1px]",
-  buttonContainer: "flex flex-col sm:flex-row items-stretch sm:items-center gap-4",
+  // Hero
+  heroWrapper: "relative max-w-[1440px] mx-auto",
+  heroContainer: "flex flex-col-reverse lg:block lg:h-[634px] px-6 sm:px-10 lg:px-[135px]",
+  textColumn: "relative z-10 max-w-[669px] pt-6 pb-12 lg:h-full lg:flex lg:flex-col lg:justify-end lg:pt-0 lg:pb-[216px]",
+  title: "font-bold text-[40px] sm:text-[54px] lg:text-[56px] xl:text-[64px] leading-[1.12] xl:leading-[66px] text-[#4E4B66] tracking-[1px] mb-8 lg:mb-[32px]",
   
   // Buttons
-  primaryBtn: "flex items-center justify-center px-8 h-[64px] bg-[#5F2EEA] hover:bg-[#4f23cb] text-white font-semibold rounded-full shadow-lg shadow-indigo-500/25 transition-all tracking-wide text-sm",
-  secondaryBtn: "flex items-center justify-center px-8 h-[64px] border-2 border-[#5F2EEA] hover:bg-indigo-50 text-[#5F2EEA] font-semibold rounded-full transition-all tracking-wide text-sm",
+  buttonContainer: "flex flex-col sm:flex-row items-stretch sm:items-center gap-4 lg:gap-[25px]",
+  primaryBtn: "flex items-center justify-center w-full sm:w-[243px] h-[64px] bg-[#5F2EEA] hover:bg-[#4f23cb] text-white font-semibold rounded-full shadow-lg shadow-indigo-500/20 transition-all tracking-wider text-sm uppercase",
+  secondaryBtn: "flex items-center justify-center w-full sm:w-[243px] h-[64px] bg-white border-2 border-[#5F2EEA] hover:bg-indigo-50 text-[#5F2EEA] font-semibold rounded-full transition-all tracking-wider text-sm uppercase",
   
-  // Ilustration
-  illustration: "w-full max-w-[650px] lg:max-w-none h-auto object-contain",
-
-  // Stats Bar
-  statsGrid: "grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-gray-100",
-  statItem: "flex flex-col space-y-2",
-  statHeader: "flex items-center space-x-3 text-indigo-600",
-  statNumber: "font-['Poppins'] font-bold text-3xl sm:text-4xl text-[#2D2A4A]",
-  statDesc: "text-gray-500 text-sm leading-relaxed"
+  // Illustration
+  illustrationWrapper: "relative pt-6 lg:pt-0 lg:absolute lg:bottom-0 lg:left-[360px] xl:left-[430px] lg:right-[calc(50%-50vw)] lg:w-auto lg:h-[634px] z-20 pointer-events-none select-none",
+  illustration: "w-full h-auto lg:w-full lg:h-full object-contain lg:object-cover object-left-bottom",
+  
+  // Stats
+  statsWrapper: "relative z-30 px-6 sm:px-10 lg:px-0 lg:border-t lg:border-b lg:border-[#D9DBE9] bg-white",
+  statsGrid: "max-w-[1440px] mx-auto lg:px-[135px] border border-[#D9DBE9] lg:border-0 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#D9DBE9]",
+  statItem: "p-8 md:py-10 md:px-8 first:md:pl-0 last:md:pr-0 flex items-start gap-4",
+  statIcon: "shrink-0",
+  statImg: "w-[37.04px] h-[37.04px] object-contain",
+  statContent: "flex flex-col space-y-2",
+  statNumber: "font-bold text-[28px] lg:text-[32px] leading-none text-[#2A00A2]",
+  statDesc: "text-[#6E7191] text-sm leading-relaxed max-w-[230px]"
 };
 ---
 
 <section class={styles.section}>
-  <div class={styles.wrapper}>
-    
-    <!-- HEADER -->
-    <header class={styles.nav}>
+  
+  <!-- Header -->
+  <header class={styles.headerWrapper}>
+    <nav class={styles.nav}>
       <a href={`/${lang}`} class={styles.logo}>
         {content.logo}
       </a>
       
       <button aria-label={content.navMenuAlt} class={styles.menuButton}>
-        <!-- menu icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-full h-full">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1H27M1 9H27M1 17H27" stroke="#5F2EEA" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
       </button>
-    </header>
+    </nav>
+  </header>
 
-    <!-- HERO SECTION -->
-    <div class={styles.heroGrid}>
+  <!-- Hero -->
+  <div class={styles.heroWrapper}>
+    <div class={styles.heroContainer}>
       
-      <!-- left column -->
-      <div class={styles.leftColumn}>
+      <!-- Title & Buttons -->
+      <div class={styles.textColumn}>
         <h1 class={styles.title}>
           {content.title}
         </h1>
@@ -80,59 +84,55 @@ const styles = {
         </div>
       </div>
 
-      <!-- right column -->
-      <div class={styles.rightColumn}>
-        <!-- Nota: foto aqui -->
+      <!-- Illustration -->
+      <div class={styles.illustrationWrapper}>
         <img 
-          src="/assets/boarding-illustration.svg" 
-          alt="Iustración de viaje" 
+          src="/Boarding.avif" 
+          alt={content.illustrationAlt} 
           class={styles.illustration}
           loading="eager"
         />
       </div>
 
     </div>
+  </div>
 
-    <!-- STATS SECTION -->
+<!-- Stats -->
+  <div class={styles.statsWrapper}>
     <div class={styles.statsGrid}>
       
-      <!-- Stat 1: Locations -->
+      <!-- Stat 1 -->
       <div class={styles.statItem}>
-        <div class={styles.statHeader}>
-          <!-- Icono avión pequeño -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-          </svg>
+        <div class={styles.statIcon}>
+          <img src="/AirplaneTilt.avif" alt="icono avión" aria-hidden="true" class={styles.statImg} />
+        </div>
+        <div class={styles.statContent}>
           <span class={styles.statNumber}>{content.stats.locations.number}</span>
+          <p class={styles.statDesc}>{content.stats.locations.description}</p>
         </div>
-        <p class={styles.statDesc}>{content.stats.locations.description}</p>
       </div>
 
-      <!-- Stat 2: Reviews -->
+      <!-- Stat 2 -->
       <div class={styles.statItem}>
-        <div class={styles.statHeader}>
-          <!-- Icon reviews -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
+        <div class={styles.statIcon}>
+          <img src="/GlobeHemisphereEast.avif" alt="icono mundo" aria-hidden="true" class={styles.statImg} />
+        </div>
+        <div class={styles.statContent}>
           <span class={styles.statNumber}>{content.stats.reviews.number}</span>
+          <p class={styles.statDesc}>{content.stats.reviews.description}</p>
         </div>
-        <p class={styles.statDesc}>{content.stats.reviews.description}</p>
       </div>
 
-      <!-- Stat 3: Travellers -->
+      <!-- Stat 3 -->
       <div class={styles.statItem}>
-        <div class={styles.statHeader}>
-          <!-- Icon trav -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          <span class={styles.statNumber}>{content.stats.travellers.number}</span>
+        <div class={styles.statIcon}>
+          <img src="/Bicycle.avif" alt="icono bicicleta" aria-hidden="true" class={styles.statImg} />
         </div>
-        <p class={styles.statDesc}>{content.stats.travellers.description}</p>
+        <div class={styles.statContent}>
+          <span class={styles.statNumber}>{content.stats.travellers.number}</span>
+          <p class={styles.statDesc}>{content.stats.travellers.description}</p>
+        </div>
       </div>
-
-    </div>
-
+   </div>
   </div>
 </section>
