@@ -83,7 +83,7 @@ const styles = {
       <!-- Stat 1 -->
       <div class={styles.statItem}>
         <div class={styles.statIcon}>
-          <img src="/AirplaneTilt.avif" alt="icono avión" aria-hidden="true" class={styles.statImg} />
+          <img src="/AirplaneTilt.avif" alt={content.stats.locations.iconAlt} class={styles.statImg} />
         </div>
         <div class={styles.statContent}>
           <span class={styles.statNumber}>{content.stats.locations.number}</span>
@@ -94,7 +94,7 @@ const styles = {
       <!-- Stat 2 -->
       <div class={styles.statItem}>
         <div class={styles.statIcon}>
-          <img src="/GlobeHemisphereEast.avif" alt="icono mundo" aria-hidden="true" class={styles.statImg} />
+          <img src="/GlobeHemisphereEast.avif" alt={content.stats.reviews.iconAlt} class={styles.statImg} />
         </div>
         <div class={styles.statContent}>
           <span class={styles.statNumber}>{content.stats.reviews.number}</span>
@@ -105,7 +105,7 @@ const styles = {
       <!-- Stat 3 -->
       <div class={styles.statItem}>
         <div class={styles.statIcon}>
-          <img src="/Bicycle.avif" alt="icono bicicleta" aria-hidden="true" class={styles.statImg} />
+          <img src="/Bicycle.avif" alt={content.stats.travellers.iconAlt} class={styles.statImg} />
         </div>
         <div class={styles.statContent}>
           <span class={styles.statNumber}>{content.stats.travellers.number}</span>

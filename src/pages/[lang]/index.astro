@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 
 import '../../styles/global.css';
 
-// secciones ordenadas de la 1 a la 7
+// secciones ordenadas
 import TripPlans from '../../components/1-trip-plans.astro';
 import Header from '../../components/0-header.astro';
 import TravelTools from '../../components/2-travel-tools.astro';
@@ -21,7 +21,7 @@ export function getStaticPaths() {
   ];
 }
 
-// capturamos el idioma actual de la URL
+// captura el idioma actual de la URL
 const { lang } = Astro.params;
 ---
 
