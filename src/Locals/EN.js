@@ -56,5 +56,13 @@ export const localsEN = {
       },
     ],
   },
+
+  photoGallery: {
+    eyebrow: "PHOTO GALLERY",
+    title: "View the wonderful places you can visit",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, Lorem ipsum dolor sit amet, consectetur",
+  },
+
   // Resto de secciones...
 };

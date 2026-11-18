@@ -1,0 +1,51 @@
+---
+import { getTranslation } from '../Locals/index.js';
+
+interface Props {
+  lang: string;
+}
+
+const { lang = 'es' } = Astro.props;
+const t = getTranslation(lang);
+const content = t.photoGallery;
+
+// Styles
+const styles = {
+  // Layout
+  section: "bg-white py-16 lg:py-[110px] overflow-x-clip",
+  container: "max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-[135px]",
+
+  // Header Row
+  headerGrid: "flex flex-col lg:flex-row lg:items-end justify-between gap-6 lg:gap-12 mb-12 lg:mb-[64px]",
+  titleBlock: "max-w-[515px]",
+  eyebrow: "block font-semibold text-[16px] leading-[28px] tracking-[0.75px] uppercase text-[#BCA4FF] mb-3 lg:mb-[16px]",
+  title: "font-bold text-[34px] sm:text-[42px] lg:text-[48px] leading-[1.12] lg:leading-[50px] tracking-[1px] text-[#4E4B66]",
+  description: "font-normal text-[16px] leading-[28px] tracking-[0.75px] text-black max-w-[445px]",
+
+  // Carousel wrapper for Swiper
+  carouselWrapper: "w-full"
+};
+---
+
+<section class={styles.section}>
+  <div class={styles.container}>
+    
+    <!-- Header Row -->
+    <div class={styles.headerGrid}>
+      <div class={styles.titleBlock}>
+        <span class={styles.eyebrow}>{content.eyebrow}</span>
+        <h2 class={styles.title}>{content.title}</h2>
+      </div>
+      
+      <p class={styles.description}>
+        {content.description}
+      </p>
+    </div>
+
+    <!-- Swiper -->
+    <div class={styles.carouselWrapper}>
+      <!-- Swiper slides -->
+    </div>
+
+  </div>
+</section>

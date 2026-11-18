@@ -57,5 +57,13 @@ export const localsES = {
       },
     ],
   },
+
+  photoGallery: {
+    eyebrow: "GALERÍA DE FOTOS",
+    title: "Descubre los maravillosos lugares que puedes visitar",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, Lorem ipsum dolor sit amet, consectetur",
+  },
+
   // Resto de secciones
 };
