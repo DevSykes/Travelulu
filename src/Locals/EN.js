@@ -62,6 +62,35 @@ export const localsEN = {
     title: "View the wonderful places you can visit",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, Lorem ipsum dolor sit amet, consectetur",
+    items: [
+      {
+        image: "/Rectangle_12.avif",
+        imageAlt: "Hammock hanging between palm trees on a white sand beach",
+      },
+      {
+        image: "/Rectangle_13.avif",
+        imageAlt:
+          "Colorful pastel pink and blue brick house facade with arched doors",
+      },
+      {
+        image: "/Rectangle_14.avif",
+        imageAlt: "Turquoise coastal waters and green hillside",
+      },
+    ],
+  },
+  planningAhead: {
+    eyebrow: "PLANNING AHEAD",
+    title: "Let’s review your checklist of everything",
+    illustrationAlt:
+      "Traveller sitting on a suitcase checking a smartphone with an airplane in the background",
+    items: [
+      "Lorem ipsum dolor sit amet, consectetur ds.",
+      "Lorem ipsum dolor sit amet, consectetur ds.",
+      "Lorem ipsum dolor sit amet, consectetur ds.",
+      "Lorem ipsum dolor sit amet, consectetur ds.",
+      "Lorem ipsum dolor sit amet, consectetur ds.",
+      "Lorem ipsum dolor sit amet, consectetur ds.",
+    ],
   },
 
   // Resto de secciones...

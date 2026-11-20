@@ -1,11 +1,12 @@
 ---
-import { getTranslation } from '../Locals/index.js';
+import { getTranslation } from "../Locals/index.js";
+import "swiper/css";
 
 interface Props {
   lang: string;
 }
 
-const { lang = 'es' } = Astro.props;
+const { lang = "es" } = Astro.props;
 const t = getTranslation(lang);
 const content = t.photoGallery;
 
@@ -16,36 +17,76 @@ const styles = {
   container: "max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-[135px]",
 
   // Header Row
-  headerGrid: "flex flex-col lg:flex-row lg:items-end justify-between gap-6 lg:gap-12 mb-12 lg:mb-[64px]",
+  headerGrid:
+    "flex flex-col lg:flex-row lg:items-end justify-between gap-6 lg:gap-12 mb-12 lg:mb-[64px]",
   titleBlock: "max-w-[515px]",
-  eyebrow: "block font-semibold text-[16px] leading-[28px] tracking-[0.75px] uppercase text-[#BCA4FF] mb-3 lg:mb-[16px]",
-  title: "font-bold text-[34px] sm:text-[42px] lg:text-[48px] leading-[1.12] lg:leading-[50px] tracking-[1px] text-[#4E4B66]",
-  description: "font-normal text-[16px] leading-[28px] tracking-[0.75px] text-black max-w-[445px]",
+  eyebrow:
+    "block font-semibold text-[16px] leading-[28px] tracking-[0.75px] uppercase text-[#BCA4FF] mb-3 lg:mb-[16px]",
+  title:
+    "font-bold text-[34px] sm:text-[42px] lg:text-[48px] leading-[1.12] lg:leading-[50px] tracking-[1px] text-[#4E4B66]",
+  description:
+    "font-normal text-[16px] leading-[28px] tracking-[0.75px] text-black max-w-[445px]",
 
-  // Carousel wrapper for Swiper
-  carouselWrapper: "w-full"
+  // Swiper Carousel
+  swiperContainer:
+    "swiper !overflow-visible cursor-grab active:cursor-grabbing",
+  swiperWrapper: "swiper-wrapper",
+  slide:
+    "swiper-slide !w-[280px] sm:!w-[380px] lg:!w-[495px] !h-[380px] sm:!h-[480px] lg:!h-[600px] rounded-[20px] overflow-hidden select-none",
+  image:
+    "w-full h-full object-cover transition-transform duration-500 hover:scale-105",
 };
 ---
 
 <section class={styles.section}>
   <div class={styles.container}>
-    
     <!-- Header Row -->
     <div class={styles.headerGrid}>
       <div class={styles.titleBlock}>
         <span class={styles.eyebrow}>{content.eyebrow}</span>
         <h2 class={styles.title}>{content.title}</h2>
       </div>
-      
-      <p class={styles.description}>
-        {content.description}
-      </p>
+
+      <p class={styles.description}>{content.description}</p>
     </div>
 
-    <!-- Swiper -->
-    <div class={styles.carouselWrapper}>
-      <!-- Swiper slides -->
+    <!-- Swiper Carousel -->
+    <div class={styles.swiperContainer} id="gallery-swiper">
+      <div class={styles.swiperWrapper}>
+        {content.items.map((photo: any) => (
+          <div class={styles.slide}>
+            <img
+              src={photo.image}
+              alt={photo.imageAlt}
+              class={styles.image}
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
     </div>
-
   </div>
 </section>
+
+<script>
+  import Swiper from "swiper";
+
+  const initGallerySwiper = () => {
+    const swiperEl = document.querySelector("#gallery-swiper") as HTMLElement;
+    if (!swiperEl) return;
+
+    new Swiper(swiperEl, {
+      slidesPerView: "auto",
+      spaceBetween: 20,
+      grabCursor: true,
+      breakpoints: {
+        1024: {
+          spaceBetween: 30,
+        },
+      },
+    });
+  };
+
+  initGallerySwiper();
+  document.addEventListener("astro:after-swap", initGallerySwiper);
+</script>

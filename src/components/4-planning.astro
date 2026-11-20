@@ -1,0 +1,180 @@
+---
+import { getTranslation } from "../Locals/index.js";
+
+interface Props {
+  lang: string;
+}
+
+const { lang = "es" } = Astro.props;
+const t = getTranslation(lang);
+const content = t.planningAhead;
+
+const leftItems = content.items.slice(0, 3);
+const rightItems = content.items.slice(3, 6);
+
+// Styles
+const styles = {
+  // Layout
+  section: "bg-white py-16 lg:py-[110px] overflow-x-clip",
+  container: "max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-[135px]",
+
+  // Header
+  header: "max-w-[619px] mx-auto text-left lg:text-center mb-12 lg:mb-[64px]",
+  eyebrow:
+    "block font-semibold text-[16px] leading-[28px] tracking-[0.75px] uppercase text-[#BCA4FF] mb-3 lg:mb-[16px]",
+  title:
+    "font-bold text-[34px] sm:text-[42px] lg:text-[48px] leading-[1.12] lg:leading-[50px] tracking-[1px] text-[#4E4B66]",
+
+  // Desktop Composition
+  desktopLayout:
+    "hidden lg:flex relative items-center justify-between min-h-[509px]",
+  illustrationDesktopWrapper:
+    "absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0",
+  illustrationDesktop: "w-[862px] h-[509px] object-contain",
+
+  // Desktop Columns
+  sideColumn: "relative z-10 flex flex-col justify-between h-[460px] w-[355px]",
+  leftRow: "flex items-center justify-end gap-6 text-right",
+  leftRowMiddle:
+    "flex items-center justify-end gap-6 text-right -translate-x-5",
+  rightRow: "flex items-center justify-start gap-6 text-left",
+  rightRowMiddle:
+    "flex items-center justify-start gap-6 text-left translate-x-5",
+
+  // Mobile Layout
+  mobileLayout: "flex flex-col lg:hidden",
+  illustrationMobileWrapper: "w-full max-w-[420px] mx-auto mb-12",
+  illustrationMobile: "w-full h-auto object-contain",
+  mobileList: "flex flex-col gap-6",
+  mobileRowEven: "flex items-center gap-5",
+  mobileRowOdd: "flex items-center gap-5 ml-10 sm:ml-14",
+
+  // Shared Item Elements
+  iconBadge:
+    "w-[70px] h-[70px] rounded-full bg-[#F3EFFF] flex items-center justify-center shrink-0",
+  iconInner:
+    "w-[44px] h-[44px] rounded-full border-[1.5px] border-[#5F2EEA] bg-white flex items-center justify-center text-[#5F2EEA]",
+  itemText:
+    "font-semibold text-[16px] sm:text-[18px] leading-[28px] sm:leading-[34px] tracking-[0.75px] text-[#4E4B66] max-w-[263px]",
+};
+---
+
+<section class={styles.section}>
+  <div class={styles.container}>
+    <!-- Header -->
+    <div class={styles.header}>
+      <span class={styles.eyebrow}>{content.eyebrow}</span>
+      <h2 class={styles.title}>{content.title}</h2>
+    </div>
+
+    <!-- Desktop Layout -->
+    <div class={styles.desktopLayout}>
+      <!-- Center Illustration -->
+      <div class={styles.illustrationDesktopWrapper}>
+        <img
+          src="/airhelp.avif"
+          alt={content.illustrationAlt}
+          class={styles.illustrationDesktop}
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Left Checklist (3 items) -->
+      <div class={styles.sideColumn}>
+        {leftItems.map((text: string, idx: number) => (
+          <div class={idx === 1 ? styles.leftRowMiddle : styles.leftRow}>
+            <p class={styles.itemText}>{text}</p>
+            <div class={styles.iconBadge} aria-hidden="true">
+              <div class={styles.iconInner}>
+                <svg
+                  width="8"
+                  height="14"
+                  viewBox="0 0 8 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L7 7L1 13"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Right Checklist (3 items) -->
+      <div class={styles.sideColumn}>
+        {rightItems.map((text: string, idx: number) => (
+          <div class={idx === 1 ? styles.rightRowMiddle : styles.rightRow}>
+            <div class={styles.iconBadge} aria-hidden="true">
+              <div class={styles.iconInner}>
+                <svg
+                  width="8"
+                  height="14"
+                  viewBox="0 0 8 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 1L1 7L7 13"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p class={styles.itemText}>{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Mobile Layout -->
+    <div class={styles.mobileLayout}>
+      <div class={styles.illustrationMobileWrapper}>
+        <img
+          src="/airhelp.avif"
+          alt={content.illustrationAlt}
+          class={styles.illustrationMobile}
+          loading="lazy"
+        />
+      </div>
+
+      <div class={styles.mobileList}>
+        {content.items.map((text: string, idx: number) => (
+          <div
+            class={idx % 2 === 1 ? styles.mobileRowOdd : styles.mobileRowEven}
+          >
+            <div class={styles.iconBadge} aria-hidden="true">
+              <div class={styles.iconInner}>
+                <svg
+                  width="8"
+                  height="14"
+                  viewBox="0 0 8 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L7 7L1 13"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p class={styles.itemText}>{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
