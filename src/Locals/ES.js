@@ -30,13 +30,14 @@ export const localsES = {
     eyebrow: "LISTA DE HERRAMIENTAS",
     title: "Usa nuestra variedad de herramientas de viaje",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, Lorem ipsum dolor sit amet, consectetur",
+      "Todo lo que necesitas para organizar tu itinerario, gestionar gastos compartidos y reservar experiencias locales desde un solo panel.",
     learnMore: "SABER MÁS",
     items: [
       {
         id: "dates",
         title: "Planifica tus fechas",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description:
+          "Sincroniza vuelos, alojamientos y actividades en una línea temporal.",
         image: "/Time.avif",
         imageAlt:
           "Ilustración de dos relojes representando la planificación de fechas",
@@ -44,14 +45,16 @@ export const localsES = {
       {
         id: "flights",
         title: "Paga tus vuelos",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description:
+          "Compara tarifas en tiempo real y divide gastos fácilmente en grupo.",
         image: "/Plane_and_Money.avif",
         imageAlt: "Ilustración de un avión volando sobre billetes",
       },
       {
         id: "finances",
         title: "Planifica tus finanzas",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description:
+          "Fija un presupuesto diario y registra gastos en distintas divisas.",
         image: "/Money.avif",
         imageAlt: "Ilustración de billetes y monedas",
       },
@@ -62,7 +65,7 @@ export const localsES = {
     eyebrow: "GALERÍA DE FOTOS",
     title: "Descubre los maravillosos lugares que puedes visitar",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, Lorem ipsum dolor sit amet, consectetur",
+      "Explora destinos seleccionados, calas escondidas y ciudades vibrantes recomendadas por nuestra comunidad global de viajeros.",
     items: [
       {
         image: "/Rectangle_12.avif",
@@ -79,20 +82,22 @@ export const localsES = {
       },
     ],
   },
+
   planningAhead: {
     eyebrow: "PLANIFICANDO CON ANTELACIÓN",
     title: "Revisemos tu lista de verificación completa",
     illustrationAlt:
       "Viajera sentada sobre una maleta revisando su móvil con un avión de fondo",
     items: [
-      "Lorem ipsum dolor sit amet, consectetur ds.",
-      "Lorem ipsum dolor sit amet, consectetur ds.",
-      "Lorem ipsum dolor sit amet, consectetur ds.",
-      "Lorem ipsum dolor sit amet, consectetur ds.",
-      "Lorem ipsum dolor sit amet, consectetur ds.",
-      "Lorem ipsum dolor sit amet, consectetur ds.",
+      "Revisa la vigencia del pasaporte y visados.",
+      "Descarga mapas sin conexión y billetes.",
+      "Reserva traslados y tu primera noche.",
+      "Compara coberturas de seguro de viaje.",
+      "Avisa a tu banco y activa tarjetas sin comisión.",
+      "Prepara adaptadores y equipaje ligero.",
     ],
   },
+
   testimonials: {
     eyebrow: "TESTIMONIOS",
     title: "Veamos qué dicen los fans de Travelulu",
@@ -103,53 +108,55 @@ export const localsES = {
         name: "Rinoa Heartilly",
         visited: "Visitó: Francia",
         quote:
-          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+          "“Travelulu hizo que organizar nuestra ruta en grupo fuera facilísimo. Tener vuelos, estancias y presupuestos juntos nos ahorró horas.”",
         avatar: "/avatar-1.avif",
-        avatarAlt: "Ilustración de avatar de cliente",
+        avatarAlt: "Ilustración de avatar de Rinoa Heartilly",
       },
       {
         name: "Liam Payne",
         visited: "Visitó: Ámsterdam",
         quote:
-          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+          "“La lista de verificación evitó que olvidara documentos clave. Sin duda el planificador de viajes más limpio que he probado.”",
         avatar: "/avatar-2.avif",
-        avatarAlt: "Ilustración de avatar de cliente",
+        avatarAlt: "Ilustración de avatar de Liam Payne",
       },
       {
         name: "Harry Styles",
         visited: "Visitó: Londres",
         quote:
-          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+          "“Dividir gastos con amigos solía ser un caos. Con Travelulu cada uno sabía su parte incluso antes de aterrizar.”",
         avatar: "/avatar-3.avif",
-        avatarAlt: "Ilustración de avatar de cliente",
+        avatarAlt: "Ilustración de avatar de Harry Styles",
       },
       {
         name: "Cloud Strife",
         visited: "Visitó: Japón",
         quote:
-          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+          "“Desde organizar pases de tren hasta controlar presupuestos en otra moneda, esta plataforma convirtió una ruta compleja en puro disfrute.”",
         avatar: "/avatar-1.avif",
-        avatarAlt: "Ilustración de avatar de cliente",
+        avatarAlt: "Ilustración de avatar de Cloud Strife",
       },
       {
         name: "Antonio Lobato",
         visited: "Visitó: Bali",
         quote:
-          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+          "“Rápido, preciso y súper intuitivo. Fijar rincones locales desde la galería directamente en mi itinerario fue mano de santo.”",
         avatar: "/avatar-2.avif",
-        avatarAlt: "Ilustración de avatar de cliente",
+        avatarAlt: "Ilustración de avatar de Antonio Lobato",
       },
     ],
   },
+
   contactSection: {
     title: "¿Necesitas más información para empezar?",
     buttonText: "CONTACTAR",
   },
+
   footer: {
     logo: "Travelulu",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac ullamcorper magna, ac laoreet ex. Integer a consequat lectus. Nullam tortor sem",
-    copyright: "Copyright 2021, Todos los derechos reservados.",
+      "Tu compañero digital todo en uno para trazar rutas, dividir presupuestos de viaje y explorar destinos inolvidables.",
+    copyright: "Copyright 2026, Todos los derechos reservados.",
     servicesTitle: "Servicios",
     services: [
       { label: "Planificación", href: "#planning" },
@@ -168,18 +175,17 @@ export const localsES = {
       { label: "Australia", href: "#australia" },
     ],
     contactTitle: "Contacto",
-    email: "travelulu@website.com",
+    email: "hola@travelulu.com",
     addressLines: [
-      "22 Street Address,",
-      "Suburb Address",
-      "Main City, PO Box",
-      "Country",
+      "Avenida Gran Vía, 42,",
+      "Planta 3B, Centro",
+      "28013 Madrid,",
+      "España",
     ],
     mobileAddressLines: [
-      "22 Street Address, Suburb Address",
-      "Main City, PO Box, Country",
+      "Avenida Gran Vía, 42, Planta 3B",
+      "28013 Madrid, España",
     ],
-    phone: "08 8888 88888",
+    phone: "+34 910 888 888",
   },
-  // Resto de secciones
 };

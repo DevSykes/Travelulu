@@ -30,27 +30,29 @@ export const localsEN = {
     eyebrow: "TOOL LIST",
     title: "Use our assortment of travel plan tools",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, Lorem ipsum dolor sit amet, consectetur",
+      "Everything you need to organize your itinerary, manage shared expenses, and book trusted local experiences from a single dashboard.",
     learnMore: "LEARN MORE",
     items: [
       {
         id: "dates",
         title: "Plan Trip Dates",
-        description: "orem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description:
+          "Sync flights, stays, and daily activities in one timeline.",
         image: "/Time.avif",
         imageAlt: "Illustration of two clocks representing trip date planning",
       },
       {
         id: "flights",
         title: "Pay For Your Flights",
-        description: "orem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description: "Compare fares in real time and split costs with friends.",
         image: "/Plane_and_Money.avif",
         imageAlt: "Illustration of an airplane flying over banknotes",
       },
       {
         id: "finances",
         title: "Plan Your Finances",
-        description: "orem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description:
+          "Set a daily travel budget and track expenses by currency.",
         image: "/Money.avif",
         imageAlt: "Illustration of banknotes and gold coins",
       },
@@ -61,7 +63,7 @@ export const localsEN = {
     eyebrow: "PHOTO GALLERY",
     title: "View the wonderful places you can visit",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, Lorem ipsum dolor sit amet, consectetur",
+      "Explore curated destinations, hidden coastal gems, and vibrant cities recommended by our global community of travelers.",
     items: [
       {
         image: "/Rectangle_12.avif",
@@ -78,20 +80,22 @@ export const localsEN = {
       },
     ],
   },
+
   planningAhead: {
     eyebrow: "PLANNING AHEAD",
     title: "Let’s review your checklist of everything",
     illustrationAlt:
       "Traveller sitting on a suitcase checking a smartphone with an airplane in the background",
     items: [
-      "Lorem ipsum dolor sit amet, consectetur ds.",
-      "Lorem ipsum dolor sit amet, consectetur ds.",
-      "Lorem ipsum dolor sit amet, consectetur ds.",
-      "Lorem ipsum dolor sit amet, consectetur ds.",
-      "Lorem ipsum dolor sit amet, consectetur ds.",
-      "Lorem ipsum dolor sit amet, consectetur ds.",
+      "Check passport validity and entry visas.",
+      "Download offline maps and boarding passes.",
+      "Book airport transfers and first-night stays.",
+      "Compare travel insurance coverage options.",
+      "Notify your bank and enable fee-free cards.",
+      "Pack adapters, essentials, and light layers.",
     ],
   },
+
   testimonials: {
     eyebrow: "TESTIMONIALS",
     title: "Let’s see what fans of Travelulu have to say",
@@ -102,41 +106,41 @@ export const localsEN = {
         name: "Rinoa Heartilly",
         visited: "Visited: France",
         quote:
-          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+          "“Travelulu made organizing our route effortless. Having flights, stays, and budgets in one place saved us hours of stress.”",
         avatar: "/avatar-1.avif",
-        avatarAlt: "Avatar illustration of client",
+        avatarAlt: "Avatar illustration of Rinoa Heartilly",
       },
       {
         name: "Liam Payne",
-        visited: "Visited: France",
+        visited: "Visited: Ámsterdam",
         quote:
-          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+          "“The checklist feature kept me from forgetting crucial travel documents. Easily the cleanest trip planner I have ever used.”",
         avatar: "/avatar-2.avif",
-        avatarAlt: "Avatar illustration of client",
+        avatarAlt: "Avatar illustration of Liam Payne",
       },
       {
         name: "Harry Styles",
-        visited: "Visited: France",
+        visited: "Visited: London",
         quote:
-          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+          "“Splitting expenses with friends used to be a headache. With Travelulu, everyone knew their share before we even landed.”",
         avatar: "/avatar-3.avif",
-        avatarAlt: "Avatar illustration of client",
+        avatarAlt: "Avatar illustration of Harry Styles",
       },
       {
         name: "Cloud Strife",
         visited: "Visited: Japan",
         quote:
-          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+          "“From tracking train passes to managing multi-currency budgets, this platform turned a complex route into pure enjoyment.”",
         avatar: "/avatar-1.avif",
-        avatarAlt: "Avatar illustration of client",
+        avatarAlt: "Avatar illustration of Cloud Strife",
       },
       {
         name: "Antonio Lobato",
         visited: "Visited: Italy",
         quote:
-          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+          "“Fast, precise, and super intuitive. Pinning local spots from the gallery straight into my itinerary worked like magic.”",
         avatar: "/avatar-2.avif",
-        avatarAlt: "Avatar illustration of client",
+        avatarAlt: "Avatar illustration of Antonio Lobato",
       },
     ],
   },
@@ -145,11 +149,12 @@ export const localsEN = {
     title: "Need more information to get started?",
     buttonText: "CONTACT US",
   },
+
   footer: {
     logo: "Travelulu",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac ullamcorper magna, ac laoreet ex. Integer a consequat lectus. Nullam tortor sem",
-    copyright: "Copyright 2021, All Rights Reserved.",
+      "Your all-in-one digital companion to plan routes, split travel budgets, and explore unforgettable destinations worldwide.",
+    copyright: "Copyright 2026, All Rights Reserved.",
     servicesTitle: "Services",
     services: [
       { label: "Planning", href: "#planning" },
@@ -168,18 +173,14 @@ export const localsEN = {
       { label: "Australia", href: "#australia" },
     ],
     contactTitle: "Contact",
-    email: "travelulu@website.com",
+    email: "hello@travelulu.com",
     addressLines: [
-      "22 Street Address,",
-      "Suburb Address",
-      "Main City, PO Box",
-      "Country",
+      "42 Gran Vía Avenue,",
+      "Suite 3B, Centro",
+      "28013 Madrid,",
+      "Spain",
     ],
-    mobileAddressLines: [
-      "22 Street Address, Suburb Address",
-      "Main City, PO Box, Country",
-    ],
-    phone: "08 8888 88888",
+    mobileAddressLines: ["42 Gran Vía Avenue, Suite 3B", "28013 Madrid, Spain"],
+    phone: "+34 910 888 888",
   },
-  // Resto de secciones...
 };
