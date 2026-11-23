@@ -275,10 +275,6 @@ export const localsEN = {
         },
       ],
     },
-    results: {
-      // ... todo lo de results
-    },
-
     alerts: {
       expandMoreAria: "Show more properties",
       closeAlertAria: "Dismiss notification",
@@ -288,5 +284,28 @@ export const localsEN = {
       warningText:
         "From 6 April 2022, your chosen cancellation policy will apply, regardless of Coronavirus. We recommend booking a free cancellation option in case your travel plans need to change.",
     },
+  },
+  navMenu: {
+    closeAlt: "Close navigation menu",
+    home: "Home",
+    services: "Services",
+    servicesItems: [
+      { label: "Planning", href: "#planning" },
+      { label: "Financing", href: "#financing" },
+      { label: "Purchasing", href: "#purchasing" },
+      { label: "Reviewing", href: "#reviewing" },
+      { label: "Flying", href: "#flying" },
+    ],
+    continents: "Continents",
+    continentsItems: [
+      { label: "North America", href: "#north-america" },
+      { label: "South America", href: "#south-america" },
+      { label: "Asia", href: "#asia" },
+      { label: "Africa", href: "#africa" },
+      { label: "Europe", href: "#europe" },
+      { label: "Australia", href: "#australia" },
+    ],
+    contact: "Contact",
+    privacy: "Privacy",
   },
 };

@@ -288,4 +288,27 @@ export const localsES = {
         "A partir del 6 de abril de 2022 se aplicará la política de cancelación elegida. Recomendamos reservar una opción con cancelación gratuita por si cambian tus planes de viaje.",
     },
   },
+  navMenu: {
+    closeAlt: "Cerrar menú de navegación",
+    home: "Inicio",
+    services: "Servicios",
+    servicesItems: [
+      { label: "Planificación", href: "#planning" },
+      { label: "Financiación", href: "#financing" },
+      { label: "Compras", href: "#purchasing" },
+      { label: "Revisión", href: "#reviewing" },
+      { label: "Vuelos", href: "#flying" },
+    ],
+    continents: "Continentes",
+    continentsItems: [
+      { label: "Norteamérica", href: "#north-america" },
+      { label: "Sudamérica", href: "#south-america" },
+      { label: "Asia", href: "#asia" },
+      { label: "África", href: "#africa" },
+      { label: "Europa", href: "#europe" },
+      { label: "Oceanía", href: "#australia" },
+    ],
+    contact: "Contacto",
+    privacy: "Privacidad",
+  },
 };

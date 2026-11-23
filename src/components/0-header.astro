@@ -1,35 +1,426 @@
 ---
-import { getTranslation } from '../Locals/index.js';
+import { getTranslation } from "../Locals/index.js";
 
 interface Props {
   lang: string;
 }
 
-const { lang = 'es' } = Astro.props;
+const { lang = "es" } = Astro.props;
 const t = getTranslation(lang);
 const content = t.tripPlans;
+
+const fallbackMenu =
+  lang === "en"
+    ? {
+        closeAlt: "Close navigation menu",
+        home: "Home",
+        plans: "Plans",
+        services: "Services",
+        servicesItems: [
+          "Planning",
+          "Financing",
+          "Purchasing",
+          "Reviewing",
+          "Flying",
+        ],
+        continents: "Continents",
+        continentsItems: [
+          "North America",
+          "South America",
+          "Asia",
+          "Africa",
+          "Europe",
+          "Australia",
+        ],
+        contact: "Contact",
+        privacy: "Privacy",
+        privacyNotice:
+          "Your search preferences and saved trip filters stay local in your session.",
+      }
+    : {
+        closeAlt: "Cerrar menú de navegación",
+        home: "Inicio",
+        plans: "Planes",
+        services: "Servicios",
+        servicesItems: [
+          "Planificación",
+          "Financiación",
+          "Compras",
+          "Revisión",
+          "Vuelos",
+        ],
+        continents: "Continentes",
+        continentsItems: [
+          "Norteamérica",
+          "Sudamérica",
+          "Asia",
+          "África",
+          "Europa",
+          "Oceanía",
+        ],
+        contact: "Contacto",
+        privacy: "Privacidad",
+        privacyNotice:
+          "Tus preferencias de búsqueda y filtros de viaje se mantienen en tu sesión local.",
+      };
+
+const menu = {
+  ...fallbackMenu,
+  ...(t?.navMenu ?? {}),
+};
+
+// Normaliza por si los items vienen como { label, href } o como string
+const serviceLabels: string[] = (menu.servicesItems ?? []).map(
+  (item: string | { label: string }) =>
+    typeof item === "string" ? item : item.label,
+);
+
+const continentLabels: string[] = (menu.continentsItems ?? []).map(
+  (item: string | { label: string }) =>
+    typeof item === "string" ? item : item.label,
+);
+
+const homeHref = `/${lang}`;
+const plansHref = `/${lang}/plans`;
 
 // Styles
 const styles = {
   // Header
-  headerWrapper: "relative z-30 border-b border-[#D9DBE9] bg-white",
+  headerWrapper: "relative z-40 border-b border-[#D9DBE9] bg-white",
   nav: "max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-[135px] flex items-center justify-between py-6 lg:py-[34px]",
   logo: "text-[#5F2EEA] font-bold text-[28px] lg:text-[34.38px] leading-[1.2] tracking-tight",
-  menuButton: "w-[28px] h-[18px] flex items-center justify-center text-[#5F2EEA] hover:opacity-80 transition-opacity focus:outline-none cursor-pointer"
+  menuButton:
+    "w-[28px] h-[18px] flex items-center justify-center text-[#5F2EEA] hover:opacity-80 transition-opacity focus:outline-none cursor-pointer",
+
+  // Drawer Overlay & Container
+  backdrop: "fixed inset-0 z-40 bg-black/40 hidden transition-opacity",
+  drawer:
+    "fixed top-0 right-0 z-50 h-screen w-full max-w-[390px] bg-[#2A00A2] text-white translate-x-full transition-transform duration-300 ease-out flex flex-col overflow-y-auto shadow-2xl",
+  drawerTopBar:
+    "flex items-center justify-between px-8 py-7 border-b border-white/15",
+  drawerLogo:
+    "text-white font-bold text-[28px] lg:text-[32px] leading-[1.2] tracking-tight",
+  closeButton:
+    "p-2 text-white hover:opacity-75 transition-opacity cursor-pointer focus:outline-none",
+
+  // Drawer Navigation Links & Buttons
+  drawerNav:
+    "flex flex-col text-[18px] leading-[28px] tracking-[0.75px] font-semibold",
+  drawerLink:
+    "pl-14 pr-8 py-4 hover:bg-[#5F2EEA] transition-colors text-left w-full block cursor-pointer",
+
+  // Drawer Accordions (Services / Continents)
+  accordionTrigger:
+    "w-full flex items-center gap-4 px-8 py-4 text-left hover:bg-[#5F2EEA] transition-colors cursor-pointer",
+  accordionChevron: "transition-transform duration-200 shrink-0",
+  accordionPanel:
+    "hidden bg-[#5F2EEA] pb-5 pt-1 flex flex-col gap-1.5 pl-14 pr-8",
+  accordionOption:
+    "w-full text-left py-1.5 px-2.5 rounded-[8px] text-[16px] leading-[26px] font-normal text-white/95 hover:bg-white/15 hover:text-white transition-colors cursor-pointer flex items-center justify-between",
+
+  // Privacy inline box
+  privacyBox:
+    "hidden mx-8 mt-2 mb-4 p-4 rounded-[12px] bg-[#5F2EEA]/80 text-[14px] leading-[22px] font-normal text-white/95",
 };
 ---
 
 <!-- Header -->
 <header class={styles.headerWrapper}>
   <nav class={styles.nav}>
-    <a href={`/${lang}`} class={styles.logo}>
+    <a href={homeHref} class={styles.logo}>
       {content.logo}
     </a>
-    
-    <button aria-label={content.navMenuAlt} class={styles.menuButton}>
-      <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 1H27M1 9H27M1 17H27" stroke="#5F2EEA" stroke-width="2.5" stroke-linecap="round"/>
+
+    <button
+      type="button"
+      data-menu-open
+      aria-label={content.navMenuAlt}
+      aria-expanded="false"
+      class={styles.menuButton}
+    >
+      <svg
+        width="28"
+        height="18"
+        viewBox="0 0 28 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M1 1H27M1 9H27M1 17H27"
+          stroke="#5F2EEA"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        />
       </svg>
     </button>
   </nav>
+
+  <!-- Backdrop -->
+  <div data-menu-backdrop class={styles.backdrop}></div>
+
+  <!-- Dropdown Drawer -->
+  <aside data-nav-drawer aria-hidden="true" class={styles.drawer}>
+    <!-- Drawer Top Header -->
+    <div class={styles.drawerTopBar}>
+      <a href={homeHref} class={styles.drawerLogo}>
+        {content.logo}
+      </a>
+
+      <button
+        type="button"
+        data-menu-close
+        aria-label={menu.closeAlt}
+        class={styles.closeButton}
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M2 2L18 18M18 2L2 18"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Drawer Navigation -->
+    <nav class={styles.drawerNav}>
+      <a href={homeHref} data-drawer-link class={styles.drawerLink}>
+        {menu.home}
+      </a>
+
+      <a href={plansHref} data-drawer-link class={styles.drawerLink}>
+        {menu.plans}
+      </a>
+
+      <!-- Services Accordion -->
+      <div data-accordion="services">
+        <button
+          type="button"
+          data-accordion-trigger
+          aria-expanded="false"
+          class={styles.accordionTrigger}
+        >
+          <svg
+            data-accordion-chevron
+            width="9"
+            height="14"
+            viewBox="0 0 9 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class={styles.accordionChevron}
+            aria-hidden="true"
+          >
+            <path
+              d="M1.5 1.5L7.5 7L1.5 12.5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>{menu.services}</span>
+        </button>
+
+        <ul data-accordion-panel class={styles.accordionPanel}>
+          {serviceLabels.map((label: string) => (
+            <li>
+              <button
+                type="button"
+                data-select-option="service"
+                data-option-value={label}
+                aria-pressed="false"
+                class={styles.accordionOption}
+              >
+                <span>{label}</span>
+                <span data-check-indicator class="hidden text-xs font-bold">
+                  ✓
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Continents Accordion -->
+      <div data-accordion="continents">
+        <button
+          type="button"
+          data-accordion-trigger
+          aria-expanded="false"
+          class={styles.accordionTrigger}
+        >
+          <svg
+            data-accordion-chevron
+            width="9"
+            height="14"
+            viewBox="0 0 9 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class={styles.accordionChevron}
+            aria-hidden="true"
+          >
+            <path
+              d="M1.5 1.5L7.5 7L1.5 12.5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>{menu.continents}</span>
+        </button>
+
+        <ul data-accordion-panel class={styles.accordionPanel}>
+          {continentLabels.map((label: string) => (
+            <li>
+              <button
+                type="button"
+                data-select-option="continent"
+                data-option-value={label}
+                aria-pressed="false"
+                class={styles.accordionOption}
+              >
+                <span>{label}</span>
+                <span data-check-indicator class="hidden text-xs font-bold">
+                  ✓
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact (scrolls smoothly to Contact section on current page) -->
+      <button type="button" data-scroll-contact class={styles.drawerLink}>
+        {menu.contact}
+      </button>
+
+      <!-- Privacy (toggles local privacy info without leaving) -->
+      <button
+        type="button"
+        data-toggle-privacy
+        aria-expanded="false"
+        class={styles.drawerLink}
+      >
+        {menu.privacy}
+      </button>
+
+      <div data-privacy-panel class={styles.privacyBox}>
+        {menu.privacyNotice}
+      </div>
+    </nav>
+  </aside>
 </header>
+
+<script>
+  const openBtn = document.querySelector("[data-menu-open]");
+  const closeBtn = document.querySelector("[data-menu-close]");
+  const drawer = document.querySelector("[data-nav-drawer]");
+  const backdrop = document.querySelector("[data-menu-backdrop]");
+
+  function openMenu() {
+    drawer?.classList.remove("translate-x-full");
+    drawer?.setAttribute("aria-hidden", "false");
+    openBtn?.setAttribute("aria-expanded", "true");
+    backdrop?.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    drawer?.classList.add("translate-x-full");
+    drawer?.setAttribute("aria-hidden", "true");
+    openBtn?.setAttribute("aria-expanded", "false");
+    backdrop?.classList.add("hidden");
+    document.body.style.overflow = "";
+  }
+
+  openBtn?.addEventListener("click", openMenu);
+  closeBtn?.addEventListener("click", closeMenu);
+  backdrop?.addEventListener("click", closeMenu);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
+
+  document.querySelectorAll("[data-drawer-link]").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Accordions
+  document.querySelectorAll("[data-accordion]").forEach((acc) => {
+    const trigger = acc.querySelector("[data-accordion-trigger]");
+    const panel = acc.querySelector("[data-accordion-panel]");
+    const chevron = acc.querySelector("[data-accordion-chevron]");
+
+    trigger?.addEventListener("click", () => {
+      const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+      const nextState = !isExpanded;
+
+      trigger.setAttribute("aria-expanded", String(nextState));
+      panel?.classList.toggle("hidden", !nextState);
+      trigger.classList.toggle("bg-[#5F2EEA]", nextState);
+      chevron?.classList.toggle("rotate-90", nextState);
+    });
+  });
+
+  // Selectable options inside Services / Continents
+  document.querySelectorAll("[data-select-option]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const group = btn.getAttribute("data-select-option");
+      const isSelected = btn.getAttribute("aria-pressed") === "true";
+
+      document
+        .querySelectorAll(`[data-select-option="${group}"]`)
+        .forEach((otherBtn) => {
+          otherBtn.setAttribute("aria-pressed", "false");
+          otherBtn.classList.remove("bg-white/20", "font-semibold");
+          otherBtn
+            .querySelector("[data-check-indicator]")
+            ?.classList.add("hidden");
+        });
+
+      if (!isSelected) {
+        btn.setAttribute("aria-pressed", "true");
+        btn.classList.add("bg-white/20", "font-semibold");
+        btn.querySelector("[data-check-indicator]")?.classList.remove("hidden");
+      }
+    });
+  });
+
+  // Scroll smoothly to Contact section (last <section> inside <main>, right before <footer>)
+  const contactBtn = document.querySelector("[data-scroll-contact]");
+  contactBtn?.addEventListener("click", () => {
+    closeMenu();
+    const sections = document.querySelectorAll("main section");
+    const contactEl =
+      document.querySelector("#contact") ||
+      (sections.length > 0
+        ? sections[sections.length - 1]
+        : document.querySelector("footer"));
+
+    requestAnimationFrame(() => {
+      contactEl?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  // Toggle privacy panel inside drawer
+  const privacyBtn = document.querySelector("[data-toggle-privacy]");
+  const privacyPanel = document.querySelector("[data-privacy-panel]");
+  privacyBtn?.addEventListener("click", () => {
+    const isOpen = privacyBtn.getAttribute("aria-expanded") === "true";
+    const nextState = !isOpen;
+    privacyBtn.setAttribute("aria-expanded", String(nextState));
+    privacyPanel?.classList.toggle("hidden", !nextState);
+  });
+</script>
