@@ -92,6 +92,57 @@ export const localsEN = {
       "Lorem ipsum dolor sit amet, consectetur ds.",
     ],
   },
-
+  testimonials: {
+    eyebrow: "TESTIMONIALS",
+    title: "Let’s see what fans of Travelulu have to say",
+    prevAlt: "Previous testimonial",
+    nextAlt: "Next testimonial",
+    items: [
+      {
+        name: "Rinoa Heartilly",
+        visited: "Visited: France",
+        quote:
+          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+        avatar: "/avatar-1.avif",
+        avatarAlt: "Avatar illustration of client",
+      },
+      {
+        name: "Liam Payne",
+        visited: "Visited: France",
+        quote:
+          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+        avatar: "/avatar-2.avif",
+        avatarAlt: "Avatar illustration of client",
+      },
+      {
+        name: "Harry Styles",
+        visited: "Visited: France",
+        quote:
+          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+        avatar: "/avatar-3.avif",
+        avatarAlt: "Avatar illustration of client",
+      },
+      {
+        name: "Cloud Strife",
+        visited: "Visited: Japan",
+        quote:
+          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+        avatar: "/avatar-1.avif",
+        avatarAlt: "Avatar illustration of client",
+      },
+      {
+        name: "Antonio Lobato",
+        visited: "Visited: Italy",
+        quote:
+          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+        avatar: "/avatar-2.avif",
+        avatarAlt: "Avatar illustration of client",
+      },
+    ],
+  },
+  contactSection: {
+    title: "Need more information to get started?",
+    buttonText: "CONTACT US",
+  },
   // Resto de secciones...
 };

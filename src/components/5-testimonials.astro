@@ -1,0 +1,173 @@
+---
+import { getTranslation } from "../Locals/index.js";
+import "swiper/css";
+
+interface Props {
+  lang: string;
+}
+
+const { lang = "es" } = Astro.props;
+const t = getTranslation(lang);
+const content = t.testimonials;
+
+// Styles
+const styles = {
+  // Layout
+  section: "bg-white py-16 lg:py-[110px] overflow-x-clip",
+  container: "max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-[135px]",
+
+  // Header Row & Navigation Buttons
+  headerGrid:
+    "flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 lg:mb-[64px]",
+  titleBlock: "max-w-[577px]",
+  eyebrow:
+    "block font-semibold text-[16px] leading-[28px] tracking-[0.75px] uppercase text-[#BCA4FF] mb-3 lg:mb-[16px]",
+  title:
+    "font-bold text-[34px] sm:text-[42px] lg:text-[48px] leading-[1.12] lg:leading-[50px] tracking-[1px] text-[#4E4B66]",
+  navButtons: "hidden lg:flex items-center gap-[26px] shrink-0",
+  navBtn:
+    "w-[56px] h-[56px] lg:w-[78px] lg:h-[78px] rounded-full bg-[#5F2EEA] hover:bg-[#4f23cb] disabled:opacity-40 disabled:cursor-not-allowed text-white flex items-center justify-center transition-all cursor-pointer",
+
+  // Swiper Carousel
+  swiperContainer:
+    "swiper !overflow-visible xl:!overflow-hidden cursor-grab active:cursor-grabbing",
+  slide:
+    "swiper-slide !w-[300px] sm:!w-[340px] md:!w-auto pt-[75px] select-none",
+  swiperWrapper: "swiper-wrapper",
+
+  // Testimonial Card
+  card: "relative bg-white border border-[#E4DAFF] rounded-[24px] px-6 sm:px-[33px] pt-[96px] pb-[44px] min-h-[434px] flex flex-col items-center text-center",
+  avatarWrapper:
+    "absolute -top-[75px] left-1/2 -translate-x-1/2 w-[149px] h-[149px] rounded-full bg-[#D9D2FF] ring-4 ring-white overflow-hidden flex items-center justify-center",
+  avatarImg: "w-full h-full object-cover",
+  name: "font-semibold text-[18px] leading-[27px] tracking-[0.75px] text-[#5F2EEA]",
+  visited:
+    "font-normal text-[18px] leading-[27px] tracking-[0.75px] text-[#5F2EEA] mt-0.5",
+  divider: "w-full max-w-[260px] h-[1px] bg-[#E4DAFF] my-6",
+  quote:
+    "font-normal text-[16px] sm:text-[18px] leading-[30px] sm:leading-[34px] tracking-[0.75px] text-[#4E4B66] max-w-[303px]",
+};
+---
+
+<section class={styles.section}>
+  <div class={styles.container}>
+    <!-- Header Row -->
+    <div class={styles.headerGrid}>
+      <div class={styles.titleBlock}>
+        <span class={styles.eyebrow}>{content.eyebrow}</span>
+        <h2 class={styles.title}>{content.title}</h2>
+      </div>
+
+      <!-- Slider Controls -->
+      <div class={styles.navButtons}>
+        <button
+          type="button"
+          id="testimonials-prev"
+          aria-label={content.prevAlt}
+          class={styles.navBtn}
+        >
+          <svg
+            width="10"
+            height="18"
+            viewBox="0 0 10 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9 1L1 9L9 17"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <button
+          type="button"
+          id="testimonials-next"
+          aria-label={content.nextAlt}
+          class={styles.navBtn}
+        >
+          <svg
+            width="10"
+            height="18"
+            viewBox="0 0 10 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 1L9 9L1 17"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Swiper Carousel -->
+    <div class={styles.swiperContainer} id="testimonials-swiper">
+      <div class={styles.swiperWrapper}>
+        {content.items.map((item: any) => (
+          <div class={styles.slide}>
+            <article class={styles.card}>
+              <div class={styles.avatarWrapper}>
+                <img
+                  src={item.avatar}
+                  alt={item.avatarAlt}
+                  class={styles.avatarImg}
+                  loading="lazy"
+                />
+              </div>
+
+              <h3 class={styles.name}>{item.name}</h3>
+              <p class={styles.visited}>{item.visited}</p>
+
+              <div class={styles.divider} aria-hidden="true"></div>
+
+              <blockquote class={styles.quote}>{item.quote}</blockquote>
+            </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation } from "swiper/modules";
+
+  const initTestimonialsSwiper = () => {
+    const swiperEl = document.querySelector(
+      "#testimonials-swiper",
+    ) as HTMLElement;
+    if (!swiperEl) return;
+
+    new Swiper(swiperEl, {
+      modules: [Navigation],
+      slidesPerView: "auto",
+      spaceBetween: 20,
+      grabCursor: true,
+      navigation: {
+        prevEl: "#testimonials-prev",
+        nextEl: "#testimonials-next",
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+        1280: {
+          slidesPerView: 3,
+          spaceBetween: 31,
+        },
+      },
+    });
+  };
+
+  initTestimonialsSwiper();
+  document.addEventListener("astro:after-swap", initTestimonialsSwiper);
+</script>

@@ -93,5 +93,57 @@ export const localsES = {
       "Lorem ipsum dolor sit amet, consectetur ds.",
     ],
   },
+  testimonials: {
+    eyebrow: "TESTIMONIOS",
+    title: "Veamos qué dicen los fans de Travelulu",
+    prevAlt: "Testimonio anterior",
+    nextAlt: "Siguiente testimonio",
+    items: [
+      {
+        name: "Rinoa Heartilly",
+        visited: "Visitó: Francia",
+        quote:
+          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+        avatar: "/avatar-1.avif",
+        avatarAlt: "Ilustración de avatar de cliente",
+      },
+      {
+        name: "Liam Payne",
+        visited: "Visitó: Ámsterdam",
+        quote:
+          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+        avatar: "/avatar-2.avif",
+        avatarAlt: "Ilustración de avatar de cliente",
+      },
+      {
+        name: "Harry Styles",
+        visited: "Visitó: Londres",
+        quote:
+          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+        avatar: "/avatar-3.avif",
+        avatarAlt: "Ilustración de avatar de cliente",
+      },
+      {
+        name: "Cloud Strife",
+        visited: "Visitó: Japón",
+        quote:
+          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+        avatar: "/avatar-1.avif",
+        avatarAlt: "Ilustración de avatar de cliente",
+      },
+      {
+        name: "Antonio Lobato",
+        visited: "Visitó: Bali",
+        quote:
+          "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar lorem justo, id faucibus mi.”",
+        avatar: "/avatar-2.avif",
+        avatarAlt: "Ilustración de avatar de cliente",
+      },
+    ],
+  },
+  contactSection: {
+    title: "¿Necesitas más información para empezar?",
+    buttonText: "CONTACTAR",
+  },
   // Resto de secciones
 };
