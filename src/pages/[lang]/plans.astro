@@ -1,0 +1,37 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+
+// Shared components
+import Header from "../../components/0-header.astro";
+import Contact from "../../components/6-contact.astro";
+import Footer from "../../components/7-footer.astro";
+
+// Subpage sections
+import SearchBar from "../../components/plans/1-search-bar.astro";
+import SearchResults from "../../components/plans/2-results.astro";
+import Alerts from "../../components/plans/3-alerts.astro";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+const pageTitle =
+  lang === "es"
+    ? "Travelulu - Buscar hoteles y planes"
+    : "Travelulu - Find deals on hotels & plans";
+---
+
+<Layout title={pageTitle} lang={lang}>
+  <Header lang={lang} />
+
+  <main>
+    <SearchBar lang={lang} />
+    <SearchResults lang={lang} />
+    <Alerts lang={lang} />
+    <Contact lang={lang} />
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

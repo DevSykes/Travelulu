@@ -1,0 +1,149 @@
+---
+import { getTranslation } from "../../Locals/index.js";
+
+interface Props {
+  lang: string;
+}
+
+const { lang = "es" } = Astro.props;
+const t = getTranslation(lang);
+const content = t.plansPage.searchBar;
+
+// Styles
+const styles = {
+  // Layout
+  section: "bg-white border-b border-[#D9DBE9] pt-8 pb-10 lg:pt-12 lg:pb-12",
+  container: "max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-[125px]",
+  innerWrapper: "max-w-[1205px]",
+
+  // Title
+  title:
+    "font-bold text-[24px] sm:text-[28px] lg:text-[32px] leading-[1.25] tracking-[0.75px] text-[#14142B] mb-6 lg:mb-[24px]",
+
+  // Form Layout
+  form: "flex flex-col lg:flex-row items-stretch lg:items-center gap-4 lg:gap-[18px]",
+
+  // Select Field Wrapper & Inputs
+  fieldDestination: "relative w-full lg:w-[474px] shrink-0",
+  fieldMedium: "relative w-full lg:w-[260px] shrink-0",
+  selectInput:
+    "w-full h-[55px] appearance-none bg-white border border-[#14142B] rounded-[16px] pl-5 pr-11 font-normal text-[15px] text-[#4E4B66] focus:outline-none focus:border-[#5F2EEA] focus:ring-2 focus:ring-[#5F2EEA]/20 transition-all cursor-pointer",
+  chevronIcon:
+    "pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[#14142B]",
+
+  // Submit Button
+  submitBtn:
+    "w-full lg:w-[156px] h-[55px] shrink-0 bg-[#ED2E7E] hover:bg-[#d6246e] text-[#F7F7FC] font-semibold text-[16px] leading-[28px] tracking-[0.75px] rounded-full transition-all cursor-pointer flex items-center justify-center",
+};
+---
+
+<section class={styles.section}>
+  <div class={styles.container}>
+    <div class={styles.innerWrapper}>
+      <h1 class={styles.title}>{content.title}</h1>
+
+      <form class={styles.form} onsubmit="return false;">
+        <!-- Destination Select -->
+        <div class={styles.fieldDestination}>
+          <select
+            aria-label={content.destinationPlaceholder}
+            class={styles.selectInput}
+          >
+            <option value="" selected>
+              {content.destinationPlaceholder}
+            </option>
+            {content.destinations.map((dest: string) => (
+              <option value={dest}>{dest}</option>
+            ))}
+          </select>
+          <svg
+            class={styles.chevronIcon}
+            width="7"
+            height="12"
+            viewBox="0 0 7 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M1 1L6 6L1 11"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <!-- Check-in / Check-out Select -->
+        <div class={styles.fieldMedium}>
+          <select
+            aria-label={content.datesPlaceholder}
+            class={styles.selectInput}
+          >
+            <option value="" selected>
+              {content.datesPlaceholder}
+            </option>
+            {content.dateOptions.map((date: string) => (
+              <option value={date}>{date}</option>
+            ))}
+          </select>
+          <svg
+            class={styles.chevronIcon}
+            width="7"
+            height="12"
+            viewBox="0 0 7 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M1 1L6 6L1 11"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <!-- Guests Select -->
+        <div class={styles.fieldMedium}>
+          <select
+            aria-label={content.guestsPlaceholder}
+            class={styles.selectInput}
+          >
+            <option value="" selected>
+              {content.guestsPlaceholder}
+            </option>
+            {content.guestOptions.map((guest: string) => (
+              <option value={guest}>{guest}</option>
+            ))}
+          </select>
+          <svg
+            class={styles.chevronIcon}
+            width="7"
+            height="12"
+            viewBox="0 0 7 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M1 1L6 6L1 11"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <!-- Search Button -->
+        <button type="submit" class={styles.submitBtn}>
+          {content.searchButton}
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

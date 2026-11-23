@@ -1,0 +1,584 @@
+---
+import { getTranslation } from "../../Locals/index.js";
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "es" } = Astro.props;
+const t = getTranslation(lang);
+
+const fallbackResults =
+  lang === "en"
+    ? {
+        sidebarTitle: "Search",
+        destinationLabel: "Destination/property name",
+        destinationPlaceholder: "Gold Coast",
+        checkInLabel: "Check-in date",
+        checkInPlaceholder: "Check-in date",
+        checkOutLabel: "Check-out date",
+        checkOutPlaceholder: "Check-out date",
+        travellersLabel: "Travellers",
+        travellersPlaceholder: "2 adults - 0 children",
+        searchButton: "Search",
+        heading: "254 Properties Found",
+        showOnMap: "Show on map",
+        bookButton: "Make a booking",
+        properties: [
+          {
+            id: "maldron",
+            name: "Maldron Hotel Newcastle",
+            stars: 4.5,
+            location: "Newcastle City Centre, Newcastle upon Tyne",
+            distance: "0.3km from centre",
+            description:
+              "Situated in Newcastle City Centre, Maldron Hotel features free WiFi and a private court yard.",
+            image: "/property-1.avif",
+            imageAlt:
+              "Modern white architectural facade of Maldron Hotel Newcastle",
+          },
+          {
+            id: "estate",
+            name: "Estate de la Newcastle",
+            stars: 5,
+            location: "Newcastle City Centre, Newcastle upon Tyne",
+            distance: "0.1km from centre",
+            description:
+              "Situated in Newcastle City Centre, Estate de la Newcastle features a private pool and garden.",
+            image: "/property-2.avif",
+            imageAlt:
+              "Two-story coastal villa with swimming pool and palm trees",
+          },
+          {
+            id: "premier",
+            name: "Newcastle Premier Hotel",
+            stars: 3,
+            location: "Newcastle City Centre, Newcastle upon Tyne",
+            distance: "1.5km from centre",
+            description:
+              "Situated in Newcastle City Centre, Newcastle Premier Hotel features panoramic terraces and WiFi.",
+            image: "/property-3.avif",
+            imageAlt:
+              "Contemporary glass and white stone hotel overlooking a pool",
+          },
+          {
+            id: "airbnb",
+            name: "AirBnB Residence",
+            stars: 3.5,
+            location: "Newcastle City Centre, Newcastle upon Tyne",
+            distance: "2.2km from centre",
+            description:
+              "Situated in Newcastle City Centre, AirBnB Residence features modern suites and a private court yard.",
+            image: "/property-4.avif",
+            imageAlt:
+              "Modern cantilevered residence with infinity pool at sunset",
+          },
+        ],
+      }
+    : {
+        sidebarTitle: "Buscar",
+        destinationLabel: "Destino / nombre del alojamiento",
+        destinationPlaceholder: "Gold Coast",
+        checkInLabel: "Fecha de entrada",
+        checkInPlaceholder: "Fecha de entrada",
+        checkOutLabel: "Fecha de salida",
+        checkOutPlaceholder: "Fecha de salida",
+        travellersLabel: "Viajeros",
+        travellersPlaceholder: "2 adultos - 0 niños",
+        searchButton: "Buscar",
+        heading: "254 alojamientos encontrados",
+        showOnMap: "Ver en el mapa",
+        bookButton: "Reservar ahora",
+        properties: [
+          {
+            id: "maldron",
+            name: "Maldron Hotel Newcastle",
+            stars: 4.5,
+            location: "Newcastle City Centre, Newcastle upon Tyne",
+            distance: "A 0,3 km del centro",
+            description:
+              "Situado en el centro de Newcastle, el Maldron Hotel ofrece WiFi gratuito y un patio interior privado.",
+            image: "/property-1.avif",
+            imageAlt:
+              "Fachada arquitectónica blanca del Maldron Hotel Newcastle",
+          },
+          {
+            id: "estate",
+            name: "Estate de la Newcastle",
+            stars: 5,
+            location: "Newcastle City Centre, Newcastle upon Tyne",
+            distance: "A 0,1 km del centro",
+            description:
+              "Situado en el centro de Newcastle, Estate de la Newcastle cuenta con piscina privada y terraza ajardinada.",
+            image: "/property-2.avif",
+            imageAlt: "Villa costera de dos plantas con piscina y palmeras",
+          },
+          {
+            id: "premier",
+            name: "Newcastle Premier Hotel",
+            stars: 3,
+            location: "Newcastle City Centre, Newcastle upon Tyne",
+            distance: "A 1,5 km del centro",
+            description:
+              "Situado en el centro de Newcastle, Newcastle Premier Hotel dispone de terrazas panorámicas y WiFi.",
+            image: "/property-3.avif",
+            imageAlt:
+              "Hotel contemporáneo de cristal y piedra blanca frente a una piscina",
+          },
+          {
+            id: "airbnb",
+            name: "AirBnB Residence",
+            stars: 3.5,
+            location: "Newcastle City Centre, Newcastle upon Tyne",
+            distance: "A 2,2 km del centro",
+            description:
+              "Situado en el centro de Newcastle, AirBnB Residence ofrece suites modernas y patio privado.",
+            image: "/property-4.avif",
+            imageAlt: "Residencia moderna con piscina infinita al atardecer",
+          },
+        ],
+      };
+
+const content = {
+  ...fallbackResults,
+  ...(t?.plansPage?.results ?? {}),
+  properties: t?.plansPage?.results?.properties ?? fallbackResults.properties,
+};
+
+// Styles
+const styles = {
+  // Layout
+  section: "bg-white pt-10 pb-12 lg:pt-[56px] lg:pb-[64px]",
+  container: "max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-[125px]",
+  layoutGrid: "flex flex-col lg:flex-row items-start gap-10 lg:gap-[37px]",
+
+  // Left Sidebar (Search Card)
+  sidebar:
+    "w-full lg:w-[369px] shrink-0 bg-[#2A00A2] rounded-[20px] px-6 py-8 sm:px-[36px] sm:py-[36px]",
+  sidebarTitle:
+    "font-semibold text-[24px] leading-[38px] tracking-[0.75px] text-[#BCA4FF] mb-5",
+  sidebarForm: "flex flex-col gap-4",
+  fieldGroup: "flex flex-col gap-1.5",
+  fieldLabel:
+    "font-normal text-[16px] leading-[28px] tracking-[0.75px] text-[#F3EFFF]",
+  inputWrapper:
+    "relative flex items-center w-full h-[55px] bg-[#F3EFFF] rounded-[16px] px-4",
+  iconSlot:
+    "w-[24px] h-[24px] shrink-0 flex items-center justify-center mr-3 text-[#14142B]",
+  selectField:
+    "w-full h-full bg-transparent appearance-none font-normal text-[16px] leading-[28px] tracking-[0.75px] text-[#14142B] pr-6 focus:outline-none cursor-pointer",
+  chevronDown:
+    "pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#4E4B66]",
+  sidebarSubmitBtn:
+    "mt-4 w-full h-[64px] bg-[#ED2E7E] hover:bg-[#d6246e] text-[#F7F7FC] font-semibold text-[16px] leading-[28px] tracking-[0.75px] rounded-full transition-all cursor-pointer flex items-center justify-center",
+
+  // Right Results Column
+  resultsCol: "w-full flex-1 min-w-0",
+  resultsHeading:
+    "font-bold text-[26px] sm:text-[32px] leading-[34px] tracking-[1px] text-[#000000] mb-6 lg:mb-[32px]",
+
+  // Properties List
+  propertiesList:
+    "flex md:flex-col gap-5 md:gap-0 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory scrollbar-none",
+
+  // Property Card
+  propertyCard:
+    "w-[280px] sm:w-[320px] md:w-full shrink-0 snap-start flex flex-col md:flex-row items-start gap-4 md:gap-[28px] md:py-[28px] first:md:pt-0 md:border-b md:border-[#D9DBE9] last:md:border-b-0",
+  propertyImgWrapper:
+    "w-full md:w-[268px] h-[204px] shrink-0 rounded-[20px] overflow-hidden bg-[#F7F7FC]",
+  propertyImg: "w-full h-full object-cover",
+
+  // Property Content
+  propertyBody: "w-full flex-1 flex flex-col",
+  propertyTopRow: "flex items-center justify-between gap-3 mb-2",
+  starsRow: "flex items-center gap-1",
+  bookBtn:
+    "hidden md:inline-flex items-center justify-center w-[172px] h-[40px] shrink-0 border border-[#D9DBE9] hover:border-[#5F2EEA] hover:bg-[#F3EFFF] rounded-full font-semibold text-[14px] leading-[24px] tracking-[0.75px] text-[#5F2EEA] transition-all cursor-pointer",
+  propertyTitle:
+    "font-semibold text-[20px] sm:text-[24px] leading-[32px] sm:leading-[38px] tracking-[0.75px] text-[#5F2EEA] mb-1",
+  propertyMeta:
+    "font-normal text-[14px] sm:text-[16px] leading-[24px] sm:leading-[28px] tracking-[0.75px] text-[#4E4B66]",
+  mapLink:
+    "inline-flex items-center gap-2 font-semibold text-[14px] sm:text-[16px] leading-[28px] tracking-[0.75px] text-[#5F2EEA] hover:underline my-1.5 w-fit",
+  propertyDesc:
+    "font-normal text-[14px] sm:text-[16px] leading-[24px] sm:leading-[28px] tracking-[0.75px] text-[#4E4B66] max-w-[478px]",
+  mobileBookBtn:
+    "mt-4 md:hidden inline-flex items-center justify-center w-full h-[44px] border border-[#D9DBE9] hover:border-[#5F2EEA] rounded-full font-semibold text-[14px] tracking-[0.75px] text-[#5F2EEA] transition-all cursor-pointer",
+};
+---
+
+<section class={styles.section}>
+  <div class={styles.container}>
+    <div class={styles.layoutGrid}>
+      <!-- Left Purple Search Sidebar -->
+      <aside class={styles.sidebar}>
+        <h2 class={styles.sidebarTitle}>{content.sidebarTitle}</h2>
+
+        <form class={styles.sidebarForm} onsubmit="return false;">
+          <!-- Field 1: Destination -->
+          <div class={styles.fieldGroup}>
+            <label for="sidebar-destination" class={styles.fieldLabel}>
+              {content.destinationLabel}
+            </label>
+            <div class={styles.inputWrapper}>
+              <!-- ICON SLOT 1 (24x24): Search / Magnifying glass icon -->
+              <span class={styles.iconSlot} aria-hidden="true">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="6.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M16 16L20.5 20.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+              <select id="sidebar-destination" class={styles.selectField}>
+                <option value="gold-coast">
+                  {content.destinationPlaceholder}
+                </option>
+                <option value="newcastle">Newcastle upon Tyne</option>
+                <option value="kyoto">Kyoto</option>
+              </select>
+              <svg
+                class={styles.chevronDown}
+                width="12"
+                height="7"
+                viewBox="0 0 12 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M1 1L6 6L11 1"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Field 2: Check-in date -->
+          <div class={styles.fieldGroup}>
+            <label for="sidebar-checkin" class={styles.fieldLabel}>
+              {content.checkInLabel}
+            </label>
+            <div class={styles.inputWrapper}>
+              <!-- ICON SLOT 2 (24x24): Check-in Calendar icon -->
+              <span class={styles.iconSlot} aria-hidden="true">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="3.5"
+                    y="5"
+                    width="17"
+                    height="15.5"
+                    rx="2.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M3.5 9.5H20.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M8 3.5V6.5M16 3.5V6.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="8" cy="13.5" r="1" fill="currentColor" />
+                  <circle cx="12" cy="13.5" r="1" fill="currentColor" />
+                  <circle cx="16" cy="13.5" r="1" fill="currentColor" />
+                  <circle cx="8" cy="17" r="1" fill="currentColor" />
+                  <circle cx="12" cy="17" r="1" fill="currentColor" />
+                </svg>
+              </span>
+              <select id="sidebar-checkin" class={styles.selectField}>
+                <option value="">{content.checkInPlaceholder}</option>
+                <option value="2026-10-12">12 Oct 2026</option>
+                <option value="2026-11-24">24 Nov 2026</option>
+              </select>
+              <svg
+                class={styles.chevronDown}
+                width="12"
+                height="7"
+                viewBox="0 0 12 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M1 1L6 6L11 1"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Field 3: Check-out date -->
+          <div class={styles.fieldGroup}>
+            <label for="sidebar-checkout" class={styles.fieldLabel}>
+              {content.checkOutLabel}
+            </label>
+            <div class={styles.inputWrapper}>
+              <!-- ICON SLOT 3 (24x24): Check-out Calendar icon -->
+              <span class={styles.iconSlot} aria-hidden="true">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="3.5"
+                    y="5"
+                    width="17"
+                    height="15.5"
+                    rx="2.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M3.5 9.5H20.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M8 3.5V6.5M16 3.5V6.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="8" cy="13.5" r="1" fill="currentColor" />
+                  <circle cx="12" cy="13.5" r="1" fill="currentColor" />
+                  <circle cx="16" cy="13.5" r="1" fill="currentColor" />
+                  <circle cx="8" cy="17" r="1" fill="currentColor" />
+                  <circle cx="12" cy="17" r="1" fill="currentColor" />
+                </svg>
+              </span>
+              <select id="sidebar-checkout" class={styles.selectField}>
+                <option value="">{content.checkOutPlaceholder}</option>
+                <option value="2026-10-19">19 Oct 2026</option>
+                <option value="2026-12-01">01 Dec 2026</option>
+              </select>
+              <svg
+                class={styles.chevronDown}
+                width="12"
+                height="7"
+                viewBox="0 0 12 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M1 1L6 6L11 1"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Field 4: Travellers -->
+          <div class={styles.fieldGroup}>
+            <label for="sidebar-travellers" class={styles.fieldLabel}>
+              {content.travellersLabel}
+            </label>
+            <div class={styles.inputWrapper}>
+              <!-- ICON SLOT 4 (24x24): Travellers / User icon -->
+              <span class={styles.iconSlot} aria-hidden="true">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="7.5"
+                    r="3.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M5 19.5C5.6 15.8 8.5 13.5 12 13.5C15.5 13.5 18.4 15.8 19 19.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+              <select id="sidebar-travellers" class={styles.selectField}>
+                <option value="2-0">{content.travellersPlaceholder}</option>
+                <option value="1-0">1 adult - 0 children</option>
+                <option value="2-2">2 adults - 2 children</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class={styles.sidebarSubmitBtn}>
+            {content.searchButton}
+          </button>
+        </form>
+      </aside>
+
+      <!-- Right Properties Results Column -->
+      <div class={styles.resultsCol}>
+        <h2 class={styles.resultsHeading}>{content.heading}</h2>
+
+        <div class={styles.propertiesList}>
+          {content.properties.map((property: any) => (
+            <article class={styles.propertyCard}>
+              <!-- Property Image -->
+              <div class={styles.propertyImgWrapper}>
+                <img
+                  src={property.image}
+                  alt={property.imageAlt}
+                  class={styles.propertyImg}
+                  loading="lazy"
+                />
+              </div>
+
+              <!-- Property Info -->
+              <div class={styles.propertyBody}>
+                <!-- Top Row: Pink Stars + Desktop "Make a booking" button -->
+                <div class={styles.propertyTopRow}>
+                  <div
+                    class={styles.starsRow}
+                    aria-label={`${property.stars} out of 5 stars`}
+                  >
+                    {Array.from({ length: 5 }).map((_, index) => {
+                      const isFull = index + 1 <= property.stars;
+                      const isHalf = !isFull && index < property.stars;
+                      const gradId = `half-star-${property.id}-${index}`;
+
+                      return (
+                        <svg
+                          width="22"
+                          height="22"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                        >
+                          {isHalf && (
+                            <defs>
+                              <linearGradient
+                                id={gradId}
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="0%"
+                              >
+                                <stop
+                                  offset="50%"
+                                  stop-color="#ED2E7E"
+                                  stop-opacity="1"
+                                />
+                                <stop
+                                  offset="50%"
+                                  stop-color="#ED2E7E"
+                                  stop-opacity="0.3"
+                                />
+                              </linearGradient>
+                            </defs>
+                          )}
+                          <path
+                            d="M12 2.5L14.9 8.4L21.4 9.3L16.7 13.9L17.8 20.4L12 17.3L6.2 20.4L7.3 13.9L2.6 9.3L9.1 8.4L12 2.5Z"
+                            stroke={isHalf ? `url(#${gradId})` : "#ED2E7E"}
+                            stroke-opacity={
+                              isHalf ? undefined : isFull ? "1" : "0.3"
+                            }
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      );
+                    })}
+                  </div>
+
+                  <button type="button" class={styles.bookBtn}>
+                    {content.bookButton}
+                  </button>
+                </div>
+
+                <!-- Title -->
+                <h3 class={styles.propertyTitle}>{property.name}</h3>
+
+                <!-- Location & Distance -->
+                <p class={styles.propertyMeta}>{property.location}</p>
+                <p class={styles.propertyMeta}>{property.distance}</p>
+
+                <!-- Show on map -->
+                <button type="button" class={styles.mapLink}>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 21C16 17 19 13.4183 19 9C19 5.13401 15.866 2 12 2C8.13401 2 5 5.13401 5 9C5 13.4183 8 17 12 21Z"
+                      stroke="#5F2EEA"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <circle
+                      cx="12"
+                      cy="9"
+                      r="2.5"
+                      stroke="#5F2EEA"
+                      stroke-width="1.8"
+                    />
+                  </svg>
+                  <span>{content.showOnMap}</span>
+                </button>
+
+                <!-- Description -->
+                <p class={styles.propertyDesc}>{property.description}</p>
+
+                <!-- Mobile Book Button -->
+                <button type="button" class={styles.mobileBookBtn}>
+                  {content.bookButton}
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

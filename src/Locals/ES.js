@@ -188,4 +188,104 @@ export const localsES = {
     ],
     phone: "+34 910 888 888",
   },
+
+  plansPage: {
+    searchBar: {
+      title: "Encuentra ofertas en hoteles, casas y mucho más...",
+      destinationPlaceholder: "¿Adónde vas?",
+      destinations: [
+        "Gold Coast, Australia",
+        "Newcastle upon Tyne, Reino Unido",
+        "Kioto, Japón",
+        "Ámsterdam, Países Bajos",
+        "Lisboa, Portugal",
+      ],
+      datesPlaceholder: "Entrada - Salida",
+      dateOptions: ["12 Oct - 19 Oct", "24 Nov - 01 Dic", "15 Ene - 22 Ene"],
+      guestsPlaceholder: "2 adultos - 0 niños",
+      guestOptions: [
+        "1 adulto - 0 niños",
+        "2 adultos - 0 niños",
+        "2 adultos - 2 niños",
+        "4 adultos - 0 niños",
+      ],
+      searchButton: "Buscar",
+    },
+
+    results: {
+      sidebarTitle: "Buscar",
+      destinationLabel: "Destino / nombre del alojamiento",
+      destinationPlaceholder: "Gold Coast",
+      checkInLabel: "Fecha de entrada",
+      checkInPlaceholder: "Fecha de entrada",
+      checkOutLabel: "Fecha de salida",
+      checkOutPlaceholder: "Fecha de salida",
+      travellersLabel: "Viajeros",
+      travellersPlaceholder: "2 adultos - 0 niños",
+      searchButton: "Buscar",
+      heading: "254 alojamientos encontrados",
+      showOnMap: "Ver en el mapa",
+      bookButton: "Reservar ahora",
+      properties: [
+        {
+          id: "maldron",
+          name: "Maldron Hotel Newcastle",
+          stars: 4.5,
+          totalStars: 5,
+          location: "Newcastle City Centre, Newcastle upon Tyne",
+          distance: "A 0,3 km del centro",
+          description:
+            "Situado en el centro de Newcastle, el Maldron Hotel ofrece WiFi gratuito y un patio interior privado.",
+          image: "/property-1.avif",
+          imageAlt: "Fachada arquitectónica blanca del Maldron Hotel Newcastle",
+        },
+        {
+          id: "estate",
+          name: "Estate de la Newcastle",
+          stars: 5,
+          totalStars: 5,
+          location: "Newcastle City Centre, Newcastle upon Tyne",
+          distance: "A 0,1 km del centro",
+          description:
+            "Situado en el centro de Newcastle, Estate de la Newcastle cuenta con piscina privada y terraza ajardinada.",
+          image: "/property-2.avif",
+          imageAlt: "Villa costera de dos plantas con piscina y palmeras",
+        },
+        {
+          id: "premier",
+          name: "Newcastle Premier Hotel",
+          stars: 3,
+          totalStars: 5,
+          location: "Newcastle City Centre, Newcastle upon Tyne",
+          distance: "A 1,5 km del centro",
+          description:
+            "Situado en el centro de Newcastle, Newcastle Premier Hotel dispone de terrazas panorámicas y WiFi.",
+          image: "/property-3.avif",
+          imageAlt:
+            "Hotel contemporáneo de cristal y piedra blanca frente a una piscina",
+        },
+        {
+          id: "airbnb",
+          name: "AirBnB Residence",
+          stars: 3.5,
+          totalStars: 5,
+          location: "Newcastle City Centre, Newcastle upon Tyne",
+          distance: "A 2,2 km del centro",
+          description:
+            "Situado en el centro de Newcastle, AirBnB Residence ofrece suites modernas y patio privado.",
+          image: "/property-4.avif",
+          imageAlt: "Residencia moderna con piscina infinita al atardecer",
+        },
+      ],
+    },
+    alerts: {
+      expandMoreAria: "Ver más alojamientos",
+      closeAlertAria: "Cerrar aviso",
+      successLine1: "Asegura un gran precio para tu próxima estancia",
+      successLine2:
+        "¡Obtén confirmación inmediata con cancelación GRATUITA en la mayoría de habitaciones!",
+      warningText:
+        "A partir del 6 de abril de 2022 se aplicará la política de cancelación elegida. Recomendamos reservar una opción con cancelación gratuita por si cambian tus planes de viaje.",
+    },
+  },
 };

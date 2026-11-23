@@ -34,7 +34,7 @@ const styles = {
 
   // Button
   button:
-    "flex items-center justify-center w-full sm:w-[243px] h-[64px] border-2 border-white hover:bg-white hover:text-[#5F2EEA] text-white font-semibold rounded-full transition-all tracking-wider text-sm uppercase",
+    "flex items-center justify-center w-full sm:w-[243px] h-[64px] border-2 border-white hover:bg-white hover:text-[#5F2EEA] text-white font-semibold rounded-full transition-all tracking-wider text-sm uppercase cursor-pointer",
 };
 ---
 
@@ -50,9 +50,9 @@ const styles = {
       <div class={styles.contentBox}>
         <h2 class={styles.title}>{content.title}</h2>
 
-        <a href={`/${lang}/contact`} class={styles.button}>
+        <button type="button" class={styles.button}>
           {content.buttonText}
-        </a>
+        </button>
       </div>
     </div>
   </div>

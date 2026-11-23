@@ -112,7 +112,7 @@ export const localsEN = {
       },
       {
         name: "Liam Payne",
-        visited: "Visited: Ámsterdam",
+        visited: "Visited: Amsterdam",
         quote:
           "“The checklist feature kept me from forgetting crucial travel documents. Easily the cleanest trip planner I have ever used.”",
         avatar: "/avatar-2.avif",
@@ -182,5 +182,111 @@ export const localsEN = {
     ],
     mobileAddressLines: ["42 Gran Vía Avenue, Suite 3B", "28013 Madrid, Spain"],
     phone: "+34 910 888 888",
+  },
+
+  plansPage: {
+    searchBar: {
+      title: "Find deals on hotels, homes and much more...",
+      destinationPlaceholder: "Where are you going?",
+      destinations: [
+        "Gold Coast, Australia",
+        "Newcastle upon Tyne, UK",
+        "Kyoto, Japan",
+        "Amsterdam, Netherlands",
+        "Lisbon, Portugal",
+      ],
+      datesPlaceholder: "Check-in - Check-out",
+      dateOptions: ["12 Oct - 19 Oct", "24 Nov - 01 Dec", "15 Jan - 22 Jan"],
+      guestsPlaceholder: "2 adults - 0 children",
+      guestOptions: [
+        "1 adult - 0 children",
+        "2 adults - 0 children",
+        "2 adults - 2 children",
+        "4 adults - 0 children",
+      ],
+      searchButton: "Search",
+    },
+
+    results: {
+      sidebarTitle: "Search",
+      destinationLabel: "Destination/property name",
+      destinationPlaceholder: "Gold Coast",
+      checkInLabel: "Check-in date",
+      checkInPlaceholder: "Check-in date",
+      checkOutLabel: "Check-out date",
+      checkOutPlaceholder: "Check-out date",
+      travellersLabel: "Travellers",
+      travellersPlaceholder: "2 adults - 0 children",
+      searchButton: "Search",
+      heading: "254 Properties Found",
+      showOnMap: "Show on map",
+      bookButton: "Make a booking",
+      properties: [
+        {
+          id: "maldron",
+          name: "Maldron Hotel Newcastle",
+          stars: 4.5,
+          totalStars: 5,
+          location: "Newcastle City Centre, Newcastle upon Tyne",
+          distance: "0.3km from centre",
+          description:
+            "Situated in Newcastle City Centre, Maldron Hotel features free WiFi and a private court yard.",
+          image: "/property-1.avif",
+          imageAlt:
+            "Modern white architectural facade of Maldron Hotel Newcastle",
+        },
+        {
+          id: "estate",
+          name: "Estate de la Newcastle",
+          stars: 5,
+          totalStars: 5,
+          location: "Newcastle City Centre, Newcastle upon Tyne",
+          distance: "0.1km from centre",
+          description:
+            "Situated in Newcastle City Centre, Estate de la Newcastle features a private pool and garden.",
+          image: "/property-2.avif",
+          imageAlt: "Two-story coastal villa with swimming pool and palm trees",
+        },
+        {
+          id: "premier",
+          name: "Newcastle Premier Hotel",
+          stars: 3,
+          totalStars: 5,
+          location: "Newcastle City Centre, Newcastle upon Tyne",
+          distance: "1.5km from centre",
+          description:
+            "Situated in Newcastle City Centre, Newcastle Premier Hotel features panoramic terraces and WiFi.",
+          image: "/property-3.avif",
+          imageAlt:
+            "Contemporary glass and white stone hotel overlooking a pool",
+        },
+        {
+          id: "airbnb",
+          name: "AirBnB Residence",
+          stars: 3.5,
+          totalStars: 5,
+          location: "Newcastle City Centre, Newcastle upon Tyne",
+          distance: "2.2km from centre",
+          description:
+            "Situated in Newcastle City Centre, AirBnB Residence features modern suites and a private court yard.",
+          image: "/property-4.avif",
+          imageAlt:
+            "Modern cantilevered residence with infinity pool at sunset",
+        },
+      ],
+    },
+    results: {
+      // ... todo lo de results
+    },
+
+    alerts: {
+      expandMoreAria: "Show more properties",
+      closeAlertAria: "Dismiss notification",
+      successLine1: "Lock in a great price for your upcoming stay",
+      successLine2:
+        "Get instant confirmation with FREE cancellation on most rooms!",
+      warningText:
+        "From 6 April 2022, your chosen cancellation policy will apply, regardless of Coronavirus. We recommend booking a free cancellation option in case your travel plans need to change.",
+    },
   },
 };
