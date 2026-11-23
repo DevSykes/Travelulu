@@ -140,9 +140,46 @@ export const localsEN = {
       },
     ],
   },
+
   contactSection: {
     title: "Need more information to get started?",
     buttonText: "CONTACT US",
+  },
+  footer: {
+    logo: "Travelulu",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac ullamcorper magna, ac laoreet ex. Integer a consequat lectus. Nullam tortor sem",
+    copyright: "Copyright 2021, All Rights Reserved.",
+    servicesTitle: "Services",
+    services: [
+      { label: "Planning", href: "#planning" },
+      { label: "Financing", href: "#financing" },
+      { label: "Purchasing", href: "#purchasing" },
+      { label: "Meeting", href: "#meeting" },
+      { label: "Flying", href: "#flying" },
+    ],
+    continentsTitle: "Continents",
+    continents: [
+      { label: "North America", href: "#north-america" },
+      { label: "South America", href: "#south-america" },
+      { label: "Asia", href: "#asia" },
+      { label: "Africa", href: "#africa" },
+      { label: "Europe", href: "#europe" },
+      { label: "Australia", href: "#australia" },
+    ],
+    contactTitle: "Contact",
+    email: "travelulu@website.com",
+    addressLines: [
+      "22 Street Address,",
+      "Suburb Address",
+      "Main City, PO Box",
+      "Country",
+    ],
+    mobileAddressLines: [
+      "22 Street Address, Suburb Address",
+      "Main City, PO Box, Country",
+    ],
+    phone: "08 8888 88888",
   },
   // Resto de secciones...
 };

@@ -1,0 +1,118 @@
+---
+import { getTranslation } from "../Locals/index.js";
+
+interface Props {
+  lang: string;
+}
+
+const { lang = "es" } = Astro.props;
+const t = getTranslation(lang);
+const content = t.footer;
+
+// Styles
+const styles = {
+  // Layout
+  footer: "bg-white pt-6 pb-16 lg:pt-8 lg:pb-[100px]",
+  container: "max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-[135px]",
+  grid: "grid grid-cols-1 lg:grid-cols-[1.6fr_1fr_1fr_1.1fr] gap-12 lg:gap-8 text-center lg:text-left",
+
+  // Column 1: Brand & Copyright
+  brandCol: "flex flex-col items-center lg:items-start",
+  logo: "font-bold text-[32px] lg:text-[20px] leading-[32px] text-[#5F2EEA] mb-6 lg:mb-[28px]",
+  description:
+    "font-normal text-[14px] leading-[24px] tracking-[0.75px] text-[#4E4B66] lg:text-black max-w-[310px] lg:max-w-[257px] mb-6 lg:mb-[28px]",
+  copyright:
+    "font-normal lg:font-semibold text-[14px] lg:text-[13px] leading-[22px] tracking-[0.25px] text-[#4E4B66] lg:text-black",
+
+  // Columns 2 & 3: Navigation Lists (Hidden on mobile per Figma)
+  linksCol: "hidden lg:flex flex-col items-start",
+  colTitle:
+    "font-semibold text-[20px] leading-[32px] tracking-[0.75px] text-[#14142B] mb-6 lg:mb-[28px]",
+  linkList: "flex flex-col gap-4",
+  linkItem:
+    "font-normal text-[14px] leading-[24px] tracking-[0.75px] text-[#6E7191] hover:text-[#5F2EEA] transition-colors",
+
+  // Column 4: Contact Info
+  contactCol: "flex flex-col items-center lg:items-start",
+  email:
+    "font-normal text-[14px] leading-[24px] tracking-[0.75px] text-[#5F2EEA] hover:underline mb-6",
+  addressDesktop:
+    "hidden lg:block font-normal text-[14px] leading-[24px] tracking-[0.75px] text-[#6E7191] mb-6",
+  addressMobile:
+    "block lg:hidden font-normal text-[14px] leading-[24px] tracking-[0.75px] text-[#6E7191] mb-6",
+  phone:
+    "font-normal text-[14px] leading-[24px] tracking-[0.75px] text-[#6E7191] hover:text-[#5F2EEA] transition-colors",
+};
+---
+
+<footer class={styles.footer}>
+  <div class={styles.container}>
+    <div class={styles.grid}>
+      <!-- Brand Column -->
+      <div class={styles.brandCol}>
+        <a href={`/${lang}`} class={styles.logo}>
+          {content.logo}
+        </a>
+        <p class={styles.description}>{content.description}</p>
+        <p class={styles.copyright}>{content.copyright}</p>
+      </div>
+
+      <!-- Services Column -->
+      <div class={styles.linksCol}>
+        <h3 class={styles.colTitle}>{content.servicesTitle}</h3>
+        <ul class={styles.linkList}>
+          {content.services.map((item: any) => (
+            <li>
+              <a href={item.href} class={styles.linkItem}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Continents Column -->
+      <div class={styles.linksCol}>
+        <h3 class={styles.colTitle}>{content.continentsTitle}</h3>
+        <ul class={styles.linkList}>
+          {content.continents.map((item: any) => (
+            <li>
+              <a href={item.href} class={styles.linkItem}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact Column -->
+      <div class={styles.contactCol}>
+        <h3 class={styles.colTitle}>{content.contactTitle}</h3>
+        <a href={`mailto:${content.email}`} class={styles.email}>
+          {content.email}
+        </a>
+
+        <!-- Desktop Multiline Address -->
+        <address class={`not-italic ${styles.addressDesktop}`}>
+          {content.addressLines.map((line: string) => (
+            <span class="block">{line}</span>
+          ))}
+        </address>
+
+        <!-- Mobile Two-Line Address -->
+        <address class={`not-italic ${styles.addressMobile}`}>
+          {content.mobileAddressLines.map((line: string) => (
+            <span class="block">{line}</span>
+          ))}
+        </address>
+
+        <a
+          href={`tel:${content.phone.replace(/\s+/g, "")}`}
+          class={styles.phone}
+        >
+          {content.phone}
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

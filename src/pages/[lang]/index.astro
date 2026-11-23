@@ -1,41 +1,41 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
 
-import '../../styles/global.css';
+// Ordered sections
+import Header from "../../components/0-header.astro";
+import TripPlans from "../../components/1-trip-plans.astro";
+import TravelTools from "../../components/2-travel-tools.astro";
+import Gallery from "../../components/3-gallery.astro";
+import Planning from "../../components/4-planning.astro";
+import Testimonials from "../../components/5-testimonials.astro";
+import Contact from "../../components/6-contact.astro";
+import Footer from "../../components/7-footer.astro";
 
-// secciones ordenadas
-import TripPlans from '../../components/1-trip-plans.astro';
-import Header from '../../components/0-header.astro';
-import TravelTools from '../../components/2-travel-tools.astro';
-import Gallery from '../../components/3-gallery.astro';
-import Planning from '../../components/4-planning.astro';
-import Testimonials from '../../components/5-testimonials.astro';
-import Contact from '../../components/6-contact.astro';
-import Footer from '../../components/7-footer.astro';
-
-//  rutas estáticas para los idiomas 
+// Static paths for supported languages
 export function getStaticPaths() {
-  return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } }
-  ];
+  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
 }
 
-// captura el idioma actual de la URL
+// Capture current language from URL
 const { lang } = Astro.params;
+const pageTitle =
+  lang === "es"
+    ? "Travelulu - Planifica tu próximo viaje"
+    : "Travelulu - Plan your next trip";
 ---
 
-<Layout title="Travelulu - Plan your next trip" lang={lang}>
+<Layout title={pageTitle} lang={lang}>
+  <Header lang={lang} />
+
   <main>
-    <Header lang={lang} />
     <TripPlans lang={lang} />
     <TravelTools lang={lang} />
     <Gallery lang={lang} />
     <Planning lang={lang} />
     <Testimonials lang={lang} />
     <Contact lang={lang} />
-    <Footer lang={lang} />
   </main>
-  
+
   <Footer lang={lang} />
 </Layout>
