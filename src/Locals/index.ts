@@ -1,5 +1,5 @@
-import { localsES } from "./ES.js";
-import { localsEN } from "./EN.js";
+import { localsES } from "./ES";
+import { localsEN } from "./EN";
 
 const translations = {
   es: localsES,
